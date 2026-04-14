@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Novatio Summer Sessions — Try a Class This June | Free, Virtual, Grades 4–8</title>
-  <meta name="description" content="Try a real Novatio class this June — no application, no commitment, no cost. Three virtual sessions open to all students grades 4–8. Workshops in AI storytelling and game design, plus a social session." />
+  <title>Novatio Summer Sessions — Try a Free Class This June | Grades 4–8</title>
+  <meta name="description" content="Try Novatio free this June. Build an AI storybook, code a real video game, or meet other virtual students. One hour. Pick your date. No application, no commitment." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── DESIGN TOKENS (exact novatio.school) ──────────────────────── */
+    /* ── DESIGN TOKENS ──────────────────────────────────────────── */
     :root {
       --dark:    #222625;
       --orange:  #FC4B0C;
@@ -47,43 +46,52 @@
     .btn-nav:hover { opacity: .88; }
 
     /* ── HERO ────────────────────────────────────────────────────── */
-    .hero { background: var(--cream); padding: 64px 0 72px; position: relative; overflow: hidden; }
-    .hero-inner { display: grid; grid-template-columns: 1fr 400px; gap: 56px; align-items: start; }
+    .hero { background: var(--cream); padding: 64px 0 72px; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 56px; align-items: start; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; background: rgba(252,75,12,.1); color: var(--orange); border: 1px solid rgba(252,75,12,.2); margin-bottom: 18px; letter-spacing: .3px; }
-    .hero h1 { font-size: clamp(30px,3.8vw,52px); font-weight: 800; color: var(--dark); letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(32px,3.8vw,54px); font-weight: 800; color: var(--dark); letter-spacing: -1.5px; line-height: 1.06; margin-bottom: 20px; }
     .hero h1 span { color: var(--orange); }
-    .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; max-width: 500px; }
+    .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.78; margin-bottom: 26px; max-width: 500px; }
     .hero-sub strong { color: var(--dark); }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
     .htag { display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; background: #fff; color: #374151; border: 1px solid var(--border); }
     .htag.green { background: #DCFCE7; color: #166534; border-color: #BBF7D0; }
     .btn-hero { display: inline-block; padding: 16px 36px; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 17px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; transition: opacity .2s; margin-bottom: 10px; }
     .btn-hero:hover { opacity: .88; }
     .hero-no-commit { font-size: 12px; color: var(--muted); }
 
-    /* Hero form card */
-    .hero-card { background: #fff; border-radius: 20px; padding: 26px 26px 22px; box-shadow: 0 8px 40px rgba(34,38,37,.12), 0 2px 8px rgba(34,38,37,.06); }
+    /* ── HERO CARD ────────────────────────────────────────────────── */
+    .hero-card { background: #fff; border-radius: 20px; padding: 26px; box-shadow: 0 8px 40px rgba(34,38,37,.12), 0 2px 8px rgba(34,38,37,.06); }
     .hero-card-label { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; background: #DCFCE7; color: #166534; margin-bottom: 10px; }
-    .hero-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
-    .hero-card .fsub { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+    .hero-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 3px; }
+    .hero-card .fsub { font-size: 12px; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
 
-    /* Session picker inside hero card */
-    .session-picker { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-    .spick { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 11px; border: 1.5px solid var(--border); cursor: pointer; transition: border-color .2s, background .2s; user-select: none; }
-    .spick:hover { border-color: var(--orange); background: #fffbf9; }
-    .spick.selected { border-color: var(--orange); background: #fffbf9; }
-    .spick input[type=checkbox] { display: none; }
-    .spick-check { width: 18px; height: 18px; border-radius: 5px; border: 2px solid var(--border); background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; }
-    .spick.selected .spick-check { background: var(--orange); border-color: var(--orange); }
-    .spick-check svg { opacity: 0; transition: opacity .2s; }
-    .spick.selected .spick-check svg { opacity: 1; }
-    .spick-info { flex: 1; }
-    .spick-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 13px; font-weight: 700; color: var(--dark); line-height: 1.2; }
-    .spick-day { font-size: 11px; color: var(--muted); margin-top: 1px; }
-    .spick-type { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; letter-spacing: .5px; flex-shrink: 0; }
-    .spick-type.workshop { background: #EDE9FE; color: #5B21B6; }
-    .spick-type.social { background: #D1FAE5; color: #065F46; }
+    /* Session rows in hero card */
+    .hc-sessions { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .hc-row { border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color .2s; cursor: pointer; }
+    .hc-row.selected { border-color: var(--orange); background: #fffbf9; }
+    .hc-header { display: flex; align-items: center; gap: 10px; padding: 11px 13px; user-select: none; }
+    .hc-check { width: 18px; height: 18px; border-radius: 5px; border: 2px solid var(--border); background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; }
+    .hc-row.selected .hc-check { background: var(--orange); border-color: var(--orange); }
+    .hc-check-icon { opacity: 0; transition: opacity .2s; }
+    .hc-row.selected .hc-check-icon { opacity: 1; }
+    .hc-info { flex: 1; min-width: 0; }
+    .hc-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 13px; font-weight: 700; color: var(--dark); line-height: 1.2; }
+    .hc-subtitle { font-size: 11px; color: var(--muted); margin-top: 1px; }
+    .hc-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; letter-spacing: .5px; flex-shrink: 0; }
+    .hc-badge.workshop { background: #EDE9FE; color: #5B21B6; }
+    .hc-badge.social { background: #D1FAE5; color: #065F46; }
 
+    /* Date pills inside hero card rows */
+    .hc-dates { display: none; padding: 0 13px 12px; }
+    .hc-row.open .hc-dates { display: block; }
+    .hc-dates-label { font-size: 11px; font-weight: 600; color: var(--muted); margin-bottom: 7px; }
+    .hc-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+    .hc-pill { padding: 4px 10px; border-radius: 999px; border: 1.5px solid var(--border); font-size: 11px; font-weight: 700; color: var(--muted); background: #fff; cursor: pointer; transition: all .15s; white-space: nowrap; }
+    .hc-pill:hover { border-color: var(--orange); color: var(--orange); }
+    .hc-pill.selected { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+    /* Hero form fields */
     .fg { margin-bottom: 10px; }
     .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .fg label { display: block; font-size: 11px; font-weight: 600; color: #374151; margin-bottom: 4px; }
@@ -102,15 +110,15 @@
     .titem svg { width: 15px; height: 15px; color: var(--orange); flex-shrink: 0; }
     .tdiv { width: 1px; height: 20px; background: var(--border); }
 
-    /* ── WHAT IS NOVATIO strip ───────────────────────────────────── */
+    /* ── WHAT IS NOVATIO ─────────────────────────────────────────── */
     .novatio-strip { background: var(--dark); color: #fff; padding: 56px 0; }
     .novatio-strip-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .novatio-strip h2 { font-size: clamp(24px,2.8vw,36px); font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; color: #fff; }
+    .novatio-strip h2 { font-size: clamp(24px,2.8vw,38px); font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; color: #fff; }
     .novatio-strip h2 span { color: var(--yellow); }
-    .novatio-strip p { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.75); max-width: 440px; }
+    .novatio-strip p { font-size: 15px; line-height: 1.78; color: rgba(255,255,255,.75); max-width: 440px; }
     .novatio-strip p a { color: var(--orange2); font-weight: 600; }
     .novatio-strip p a:hover { text-decoration: underline; }
-    .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
     .stat-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: 18px 16px; text-align: center; }
     .stat-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 34px; font-weight: 800; color: var(--yellow); letter-spacing: -1px; line-height: 1; }
     .stat-label { font-size: 12px; color: rgba(255,255,255,.55); margin-top: 4px; line-height: 1.45; }
@@ -118,27 +126,33 @@
     /* ── SESSION CARDS ───────────────────────────────────────────── */
     .sessions-section { background: var(--warm); padding: 72px 0; }
     .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
-    .section-h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(26px,3vw,40px); font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
-    .section-sub { font-size: 15px; color: var(--muted); max-width: 500px; line-height: 1.7; margin-bottom: 40px; }
+    .section-h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(26px,3vw,42px); font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+    .section-sub { font-size: 15px; color: var(--muted); max-width: 520px; line-height: 1.75; margin-bottom: 40px; }
     .sessions-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-    .session-card { background: #fff; border: 2px solid var(--border); border-radius: 20px; padding: 28px 24px; cursor: pointer; transition: border-color .2s, box-shadow .2s, transform .2s; position: relative; overflow: hidden; }
-    .session-card:hover { border-color: rgba(252,75,12,.4); box-shadow: 0 8px 32px rgba(0,0,0,.1); transform: translateY(-3px); }
-    .session-card.selected { border-color: var(--orange); box-shadow: 0 0 0 4px rgba(252,75,12,.1), 0 8px 32px rgba(0,0,0,.1); }
-    .session-card.selected::after { content: '✓ Selected'; position: absolute; top: 14px; right: 14px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 999px; letter-spacing: .3px; }
+
+    .session-card { background: #fff; border: 2px solid var(--border); border-radius: 20px; padding: 28px 24px 22px; transition: border-color .2s, box-shadow .2s; position: relative; overflow: hidden; }
+    .session-card:hover { border-color: rgba(252,75,12,.3); box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+    .session-card.has-date { border-color: var(--orange); box-shadow: 0 0 0 4px rgba(252,75,12,.08), 0 6px 24px rgba(0,0,0,.08); }
+    .session-card.has-date::after { content: '✓ Selected'; position: absolute; top: 14px; right: 14px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 999px; }
     .sc-icon { font-size: 36px; margin-bottom: 14px; display: block; }
-    .sc-type { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    .sc-type { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
     .sc-type.workshop { background: #EDE9FE; color: #5B21B6; }
     .sc-type.social { background: #D1FAE5; color: #065F46; }
-    .session-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; line-height: 1.2; }
-    .sc-when { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--orange); margin-bottom: 4px; }
-    .sc-when svg { width: 13px; height: 13px; flex-shrink: 0; }
-    .sc-cal { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: var(--muted); text-decoration: none; margin-bottom: 12px; opacity: .7; transition: opacity .15s; }
+    .session-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 6px; line-height: 1.2; }
+    .sc-time { font-size: 12px; font-weight: 700; color: var(--orange); margin-bottom: 12px; }
+    .session-card p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+
+    /* Date picker inside session card */
+    .sc-date-picker { border-top: 1px solid var(--border); padding-top: 16px; }
+    .sc-date-label { font-size: 11px; font-weight: 700; color: var(--dark); margin-bottom: 10px; letter-spacing: .2px; }
+    .sc-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .sc-pill { padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--border); font-size: 12px; font-weight: 700; color: var(--muted); background: #fff; cursor: pointer; transition: all .15s; white-space: nowrap; }
+    .sc-pill:hover { border-color: var(--orange); color: var(--orange); background: #fffbf9; }
+    .sc-pill.selected { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .sc-pill.selected:hover { opacity: .88; }
+    .sc-cal { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: var(--muted); text-decoration: none; margin-top: 10px; opacity: .65; transition: opacity .15s; }
     .sc-cal:hover { opacity: 1; color: var(--orange); }
     .sc-cal svg { width: 11px; height: 11px; flex-shrink: 0; }
-    .session-card p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
-    .sc-btn { display: block; width: 100%; padding: 11px; border: 2px solid var(--orange); border-radius: 10px; background: transparent; color: var(--orange); font-family: 'Bricolage Grotesque', sans-serif; font-size: 13px; font-weight: 800; cursor: pointer; transition: all .2s; text-align: center; }
-    .session-card.selected .sc-btn { background: var(--orange); color: #fff; }
-    .sc-btn:hover { background: var(--orange); color: #fff; }
 
     /* ── HOW IT WORKS ────────────────────────────────────────────── */
     .how-section { background: var(--cream); padding: 72px 0; }
@@ -148,24 +162,27 @@
     .step h4 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
     .step p { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
-    /* ── SIGNUP FORM SECTION ─────────────────────────────────────── */
+    /* ── SIGNUP FORM ─────────────────────────────────────────────── */
     .form-section { background: var(--white); padding: 72px 0; }
     .form-center { max-width: 560px; margin: 0 auto; }
-    .selected-sessions-summary { background: #fffbf9; border: 1.5px solid rgba(252,75,12,.2); border-radius: 12px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; }
-    .sss-label { font-weight: 700; color: var(--dark); margin-bottom: 6px; font-size: 12px; }
-    .sss-items { color: var(--muted); line-height: 1.6; }
-    .sss-empty { color: var(--muted); font-style: italic; }
+    .sessions-summary { background: #fffbf9; border: 1.5px solid rgba(252,75,12,.2); border-radius: 12px; padding: 14px 16px; margin-bottom: 22px; }
+    .ss-title { font-size: 11px; font-weight: 700; color: var(--dark); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .5px; }
+    .ss-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--dark); padding: 4px 0; }
+    .ss-item .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+    .ss-item .ss-date { color: var(--muted); font-size: 12px; }
+    .ss-empty { font-size: 13px; color: var(--muted); font-style: italic; }
+    .ss-nudge { font-size: 11px; color: var(--muted); margin-top: 8px; border-top: 1px solid rgba(252,75,12,.12); padding-top: 8px; }
     .form-h2 { font-size: clamp(22px,2.5vw,30px); font-weight: 800; letter-spacing: -.5px; margin-bottom: 6px; }
     .form-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
     .form-section .fg input, .form-section .fg select { padding: 11px 14px; font-size: 14px; background: var(--cream); }
     .form-section .fg input:focus, .form-section .fg select:focus { background: #fff; }
     .form-section .btn-submit { font-size: 16px; padding: 15px; }
-    .form-section .consent { font-size: 11px; margin: 10px 0 16px; }
+    .form-section .consent { font-size: 11px; margin: 12px 0 16px; }
 
     /* ── LEARN MORE CTA ──────────────────────────────────────────── */
     .learnmore-section { background: var(--dark); padding: 64px 0; text-align: center; }
     .learnmore-section h2 { font-size: clamp(22px,2.5vw,32px); font-weight: 800; color: #fff; margin-bottom: 10px; letter-spacing: -.5px; }
-    .learnmore-section p { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .learnmore-section p { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.75; }
     .btn-learn { display: inline-block; padding: 15px 36px; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; transition: opacity .2s; }
     .btn-learn:hover { opacity: .88; }
     .learnmore-section .hint { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 10px; }
@@ -179,13 +196,13 @@
     .footer-links a:hover { color: rgba(255,255,255,.7); }
     .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
 
-    /* ── MOBILE STICKY CTA ────────────────────────────────────────── */
+    /* ── MOBILE STICKY ────────────────────────────────────────────── */
     .sticky-cta { display: none; }
 
     /* ── RESPONSIVE ──────────────────────────────────────────────── */
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .hero-inner { grid-template-columns: 1fr; }
-      .hero-card { max-width: 500px; }
+      .hero-card { max-width: 520px; }
       .novatio-strip-inner { grid-template-columns: 1fr; gap: 36px; }
       .sessions-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .steps-row { grid-template-columns: 1fr; max-width: 360px; margin: 36px auto 0; }
@@ -214,8 +231,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <img src="https://cdn.prod.website-files.com/687c139d7d1362f24d06d2ba/687c2d0dc0455a56ea3aef16_Novatio%20Primary%20Logo%20-%20Dark.svg"
-           alt="Novatio" />
+      <img src="https://cdn.prod.website-files.com/687c139d7d1362f24d06d2ba/687c2d0dc0455a56ea3aef16_Novatio%20Primary%20Logo%20-%20Dark.svg" alt="Novatio" />
     </a>
     <div class="nav-right">
       <a href="about.html" class="nav-learn">Learn about Novatio →</a>
@@ -231,14 +247,15 @@
   <div class="container">
     <div class="hero-inner">
 
-      <!-- Left -->
+      <!-- Left copy -->
       <div>
         <div class="hero-eyebrow">✦ FREE · VIRTUAL · JUNE 2026</div>
-        <h1>Try a real Novatio class.<br><span>No commitment.</span></h1>
+        <h1>Build something real.<br><span>Try Novatio this June — free.</span></h1>
         <p class="hero-sub">
-          Three 1-hour sessions this June — open to all students grades 4–8.
+          Your child writes a 10-page AI storybook, codes a real video game,
+          or meets other virtual students — all in one-hour sessions this June.
           <strong>See what Novatio is actually like before you decide anything.</strong>
-          No application, no cost, no pressure.
+          No application. No commitment. Just show up.
         </p>
         <div class="hero-tags">
           <span class="htag green">✓ Free to attend</span>
@@ -248,54 +265,90 @@
           <span class="htag">Cognia Certified</span>
           <span class="htag">4.6× Learning Growth</span>
         </div>
-        <button class="btn-hero" onclick="document.getElementById('signup-form').scrollIntoView({behavior:'smooth'})">Sign up — it's free →</button>
-        <p class="hero-no-commit">Takes 60 seconds · Pick one session or all three</p>
+        <button class="btn-hero" onclick="document.getElementById('sessions').scrollIntoView({behavior:'smooth'})">Pick your session →</button>
+        <p class="hero-no-commit">Takes 60 seconds · Pick one session or all three · No application required</p>
       </div>
 
-      <!-- Right: form card -->
+      <!-- Right: hero card -->
       <div>
         <div class="hero-card">
           <div class="hero-card-label">🎉 Free · June 2026</div>
-          <h3>Pick your sessions</h3>
-          <p class="fsub">Select any or all three — you'll get a Zoom link before each one.</p>
+          <h3>Pick a session — then a date</h3>
+          <p class="fsub">Select any or all three. Click to pick your week in June.</p>
 
-          <div class="session-picker" id="hero-picker">
-            <label class="spick" data-session="story">
-              <input type="checkbox" name="session" value="story" />
-              <div class="spick-check">
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="spick-info">
-                <div class="spick-title">Create Your Own Story</div>
-                <div class="spick-day">Tuesdays in June · 3:00 PM MST</div>
-              </div>
-              <span class="spick-type workshop">Workshop</span>
-            </label>
+          <div class="hc-sessions" id="hc-sessions">
 
-            <label class="spick" data-session="game">
-              <input type="checkbox" name="session" value="game" />
-              <div class="spick-check">
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <!-- Story -->
+            <div class="hc-row" data-session="story" onclick="toggleHcRow(this)">
+              <div class="hc-header">
+                <div class="hc-check">
+                  <svg class="hc-check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="hc-info">
+                  <div class="hc-title">Create Your Own Story</div>
+                  <div class="hc-subtitle">Tuesdays · 3:00 PM MST</div>
+                </div>
+                <span class="hc-badge workshop">Workshop</span>
               </div>
-              <div class="spick-info">
-                <div class="spick-title">Build Your Own Video Game</div>
-                <div class="spick-day">Thursdays in June · 9:00 AM MST</div>
+              <div class="hc-dates">
+                <div class="hc-dates-label">Pick your week:</div>
+                <div class="hc-pills">
+                  <button class="hc-pill" data-session="story" data-date="June 2" data-label="Tue, Jun 2" onclick="pickHcDate(event,this)">Jun 2</button>
+                  <button class="hc-pill" data-session="story" data-date="June 9" data-label="Tue, Jun 9" onclick="pickHcDate(event,this)">Jun 9</button>
+                  <button class="hc-pill" data-session="story" data-date="June 16" data-label="Tue, Jun 16" onclick="pickHcDate(event,this)">Jun 16</button>
+                  <button class="hc-pill" data-session="story" data-date="June 23" data-label="Tue, Jun 23" onclick="pickHcDate(event,this)">Jun 23</button>
+                  <button class="hc-pill" data-session="story" data-date="June 30" data-label="Tue, Jun 30" onclick="pickHcDate(event,this)">Jun 30</button>
+                </div>
               </div>
-              <span class="spick-type workshop">Workshop</span>
-            </label>
+            </div>
 
-            <label class="spick" data-session="social">
-              <input type="checkbox" name="session" value="social" />
-              <div class="spick-check">
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <!-- Game -->
+            <div class="hc-row" data-session="game" onclick="toggleHcRow(this)">
+              <div class="hc-header">
+                <div class="hc-check">
+                  <svg class="hc-check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="hc-info">
+                  <div class="hc-title">Build Your Own Video Game</div>
+                  <div class="hc-subtitle">Thursdays · 9:00 AM MST</div>
+                </div>
+                <span class="hc-badge workshop">Workshop</span>
               </div>
-              <div class="spick-info">
-                <div class="spick-title">Meet Other Virtual Schoolers</div>
-                <div class="spick-day">Wednesdays in June · 12:00 PM MST</div>
+              <div class="hc-dates">
+                <div class="hc-dates-label">Pick your week:</div>
+                <div class="hc-pills">
+                  <button class="hc-pill" data-session="game" data-date="June 4" data-label="Thu, Jun 4" onclick="pickHcDate(event,this)">Jun 4</button>
+                  <button class="hc-pill" data-session="game" data-date="June 11" data-label="Thu, Jun 11" onclick="pickHcDate(event,this)">Jun 11</button>
+                  <button class="hc-pill" data-session="game" data-date="June 18" data-label="Thu, Jun 18" onclick="pickHcDate(event,this)">Jun 18</button>
+                  <button class="hc-pill" data-session="game" data-date="June 25" data-label="Thu, Jun 25" onclick="pickHcDate(event,this)">Jun 25</button>
+                </div>
               </div>
-              <span class="spick-type social">Social</span>
-            </label>
-          </div>
+            </div>
+
+            <!-- Social -->
+            <div class="hc-row" data-session="social" onclick="toggleHcRow(this)">
+              <div class="hc-header">
+                <div class="hc-check">
+                  <svg class="hc-check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="hc-info">
+                  <div class="hc-title">Meet Other Virtual Schoolers</div>
+                  <div class="hc-subtitle">Wednesdays · 12:00 PM MST</div>
+                </div>
+                <span class="hc-badge social">Social</span>
+              </div>
+              <div class="hc-dates">
+                <div class="hc-dates-label">Pick your week:</div>
+                <div class="hc-pills">
+                  <button class="hc-pill" data-session="social" data-date="June 3" data-label="Wed, Jun 3" onclick="pickHcDate(event,this)">Jun 3</button>
+                  <button class="hc-pill" data-session="social" data-date="June 10" data-label="Wed, Jun 10" onclick="pickHcDate(event,this)">Jun 10</button>
+                  <button class="hc-pill" data-session="social" data-date="June 17" data-label="Wed, Jun 17" onclick="pickHcDate(event,this)">Jun 17</button>
+                  <button class="hc-pill" data-session="social" data-date="June 24" data-label="Wed, Jun 24" onclick="pickHcDate(event,this)">Jun 24</button>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /hc-sessions -->
 
           <form onsubmit="handleHeroSubmit(event)">
             <div class="frow">
@@ -379,16 +432,16 @@
     <div class="novatio-strip-inner">
 
       <div>
-        <h2>School that actually<br><span>fits your life.</span></h2>
+        <h2>School done by noon.<br><span>Afternoons for real life.</span></h2>
         <p>
           Novatio is a private, virtual, AI-driven school for grades 4–8.
-          Students master academics in just two focused hours each morning,
-          then spend afternoons on real-world skills — coding, entrepreneurship,
-          financial literacy, public speaking, and more.
+          Students master their academics in just two focused hours each morning,
+          then spend their afternoons on the things that actually shape who they become —
+          coding, entrepreneurship, financial literacy, public speaking, and more.
         </p>
         <p style="margin-top:14px;">
-          ESA-approved in Arizona (families pay $0). TEFA-approved in Texas ($0).
-          Cognia certified. Students grow 4.6× faster than in traditional school.
+          Students grow <strong style="color:var(--orange2)">4.6× faster</strong> than in traditional school.
+          Tuition is fully covered for AZ families (ESA) and TX families (TEFA).
           School's done by 2pm. No homework.
         </p>
         <p style="margin-top:14px;">
@@ -416,11 +469,11 @@
           </div>
           <div class="stat-card">
             <div class="stat-num">2pm</div>
-            <div class="stat-label">school's out, no homework</div>
+            <div class="stat-label">school's out. no homework.</div>
           </div>
           <div class="stat-card">
             <div class="stat-num">4–8</div>
-            <div class="stat-label">grades served, all learner types</div>
+            <div class="stat-label">grades, all learner types</div>
           </div>
         </div>
       </div>
@@ -435,72 +488,91 @@
 <section class="sessions-section" id="sessions">
   <div class="container">
     <div class="section-label">JUNE 2026 · VIRTUAL · GRADES 4–8</div>
-    <h2 class="section-h2">Three sessions. Pick one or all three.</h2>
-    <p class="section-sub">Each session is one hour. Same content runs every week so you can pick whatever week works for you.</p>
+    <h2 class="section-h2">Pick a session. Pick your week.</h2>
+    <p class="section-sub">
+      Each session is one hour. Same content runs every week of June —
+      just pick the date that works for you. Sign up for one or all three.
+    </p>
 
-    <div class="sessions-grid" id="main-session-cards">
+    <div class="sessions-grid" id="main-cards">
 
-      <!-- Card 1: Story Workshop -->
-      <div class="session-card" data-session="story" onclick="toggleMainCard(this)">
+      <!-- Card 1: Story -->
+      <div class="session-card" data-session="story">
         <span class="sc-icon">📖</span>
         <span class="sc-type workshop">Workshop</span>
         <h3>Create Your Own Story</h3>
-        <div class="sc-when">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l3 2"/></svg>
-          Tuesdays in June · 3:00 PM MST
-        </div>
-        <a class="sc-cal" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Novatio+Summer+Sessions%3A+Create+Your+Own+Story&dates=20260602T220000Z%2F20260602T230000Z&recur=RRULE%3AFREQ%3DWEEKLY%3BCOUNT%3D5&details=Use+AI+to+write+and+illustrate+your+own+10-page+storybook.+Hosted+by+Novatio+School.&location=Virtual+%28Zoom+link+sent+before+session%29" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="12" height="11" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
-          Add all 5 dates to calendar
-        </a>
+        <p class="sc-time">Tuesdays · 3:00 PM MST · 1 hour</p>
         <p>
-          Use AI to bring your story to life — your characters, your plot.
-          Students build a complete illustrated storybook and leave with
-          a finished 10-page book to share.
+          Use AI to bring your story to life — your characters, your plot,
+          your illustrations. Students build a complete 10-page storybook
+          and leave with a finished book to share.
         </p>
-        <button class="sc-btn">Select this session</button>
+        <div class="sc-date-picker">
+          <div class="sc-date-label">Pick your week in June:</div>
+          <div class="sc-pills">
+            <button class="sc-pill" data-session="story" data-date="June 2" data-label="Tue, Jun 2 · 3pm MST" onclick="pickDate(this)">Tue, Jun 2</button>
+            <button class="sc-pill" data-session="story" data-date="June 9" data-label="Tue, Jun 9 · 3pm MST" onclick="pickDate(this)">Tue, Jun 9</button>
+            <button class="sc-pill" data-session="story" data-date="June 16" data-label="Tue, Jun 16 · 3pm MST" onclick="pickDate(this)">Tue, Jun 16</button>
+            <button class="sc-pill" data-session="story" data-date="June 23" data-label="Tue, Jun 23 · 3pm MST" onclick="pickDate(this)">Tue, Jun 23</button>
+            <button class="sc-pill" data-session="story" data-date="June 30" data-label="Tue, Jun 30 · 3pm MST" onclick="pickDate(this)">Tue, Jun 30</button>
+          </div>
+          <a class="sc-cal" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Novatio+Summer+Sessions%3A+Create+Your+Own+Story&dates=20260602T220000Z%2F20260602T230000Z&recur=RRULE%3AFREQ%3DWEEKLY%3BCOUNT%3D5&details=Use+AI+to+write+and+illustrate+your+own+10-page+storybook.+Hosted+by+Novatio+School.&location=Virtual+%28Zoom+link+sent+before+session%29" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="12" height="11" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
+            Add all 5 dates to Google Calendar
+          </a>
+        </div>
       </div>
 
-      <!-- Card 2: Game Workshop -->
-      <div class="session-card" data-session="game" onclick="toggleMainCard(this)">
+      <!-- Card 2: Game -->
+      <div class="session-card" data-session="game">
         <span class="sc-icon">🎮</span>
         <span class="sc-type workshop">Workshop</span>
         <h3>Build Your Own Video Game</h3>
-        <div class="sc-when">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l3 2"/></svg>
-          Thursdays in June · 9:00 AM MST
-        </div>
-        <a class="sc-cal" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Novatio+Summer+Sessions%3A+Build+Your+Own+Video+Game&dates=20260604T160000Z%2F20260604T170000Z&recur=RRULE%3AFREQ%3DWEEKLY%3BCOUNT%3D4&details=Learn+Scratch+and+build+a+real+video+game.+Hosted+by+Novatio+School.&location=Virtual+%28Zoom+link+sent+before+session%29" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="12" height="11" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
-          Add all 4 dates to calendar
-        </a>
+        <p class="sc-time">Thursdays · 9:00 AM MST · 1 hour</p>
         <p>
-          No experience needed. Learn the basics of Scratch and build a real,
-          playable game. Customize every detail and leave with a working game
+          No experience needed. Learn Scratch and build a real, playable game
+          from scratch. Customize every detail and leave with something
           you'll actually want to share.
         </p>
-        <button class="sc-btn">Select this session</button>
+        <div class="sc-date-picker">
+          <div class="sc-date-label">Pick your week in June:</div>
+          <div class="sc-pills">
+            <button class="sc-pill" data-session="game" data-date="June 4" data-label="Thu, Jun 4 · 9am MST" onclick="pickDate(this)">Thu, Jun 4</button>
+            <button class="sc-pill" data-session="game" data-date="June 11" data-label="Thu, Jun 11 · 9am MST" onclick="pickDate(this)">Thu, Jun 11</button>
+            <button class="sc-pill" data-session="game" data-date="June 18" data-label="Thu, Jun 18 · 9am MST" onclick="pickDate(this)">Thu, Jun 18</button>
+            <button class="sc-pill" data-session="game" data-date="June 25" data-label="Thu, Jun 25 · 9am MST" onclick="pickDate(this)">Thu, Jun 25</button>
+          </div>
+          <a class="sc-cal" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Novatio+Summer+Sessions%3A+Build+Your+Own+Video+Game&dates=20260604T160000Z%2F20260604T170000Z&recur=RRULE%3AFREQ%3DWEEKLY%3BCOUNT%3D4&details=Learn+Scratch+and+build+a+real+video+game.+Hosted+by+Novatio+School.&location=Virtual+%28Zoom+link+sent+before+session%29" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="12" height="11" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
+            Add all 4 dates to Google Calendar
+          </a>
+        </div>
       </div>
 
       <!-- Card 3: Social -->
-      <div class="session-card" data-session="social" onclick="toggleMainCard(this)">
+      <div class="session-card" data-session="social">
         <span class="sc-icon">🤝</span>
         <span class="sc-type social">Social</span>
         <h3>Meet Other Virtual Schoolers</h3>
-        <div class="sc-when">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l3 2"/></svg>
-          Wednesdays in June · 12:00 PM MST
-        </div>
-        <a class="sc-cal" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Novatio+Summer+Sessions%3A+Meet+Other+Virtual+Schoolers&dates=20260603T190000Z%2F20260603T200000Z&recur=RRULE%3AFREQ%3DWEEKLY%3BCOUNT%3D4&details=Games%2C+team+challenges%2C+and+get-to-know-you+activities+with+other+virtual+students.+Hosted+by+Novatio+School.&location=Virtual+%28Zoom+link+sent+before+session%29" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="12" height="11" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
-          Add all 4 dates to calendar
-        </a>
+        <p class="sc-time">Wednesdays · 12:00 PM MST · 1 hour</p>
         <p>
           Think Amazing Race meets Blooket. Games, team challenges, scavenger hunts —
-          and a group of other virtual students who actually get it.
-          A different theme every week to keep things fresh.
+          and a group of virtual students who actually get it.
+          A different theme every week.
         </p>
-        <button class="sc-btn">Select this session</button>
+        <div class="sc-date-picker">
+          <div class="sc-date-label">Pick your week in June:</div>
+          <div class="sc-pills">
+            <button class="sc-pill" data-session="social" data-date="June 3" data-label="Wed, Jun 3 · 12pm MST" onclick="pickDate(this)">Wed, Jun 3</button>
+            <button class="sc-pill" data-session="social" data-date="June 10" data-label="Wed, Jun 10 · 12pm MST" onclick="pickDate(this)">Wed, Jun 10</button>
+            <button class="sc-pill" data-session="social" data-date="June 17" data-label="Wed, Jun 17 · 12pm MST" onclick="pickDate(this)">Wed, Jun 17</button>
+            <button class="sc-pill" data-session="social" data-date="June 24" data-label="Wed, Jun 24 · 12pm MST" onclick="pickDate(this)">Wed, Jun 24</button>
+          </div>
+          <a class="sc-cal" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Novatio+Summer+Sessions%3A+Meet+Other+Virtual+Schoolers&dates=20260603T190000Z%2F20260603T200000Z&recur=RRULE%3AFREQ%3DWEEKLY%3BCOUNT%3D4&details=Games%2C+team+challenges%2C+and+get-to-know-you+activities+with+other+virtual+students.+Hosted+by+Novatio+School.&location=Virtual+%28Zoom+link+sent+before+session%29" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="12" height="11" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
+            Add all 4 dates to Google Calendar
+          </a>
+        </div>
       </div>
 
     </div>
@@ -517,18 +589,18 @@
     <div class="steps-row">
       <div class="step">
         <div class="step-num">1</div>
-        <h4>Pick your sessions</h4>
-        <p>Select one session or all three. Each one is a standalone 1-hour class — no sequence, no prep required.</p>
+        <h4>Pick a session and a date</h4>
+        <p>Choose one or all three sessions. Click a date to claim your spot in that week of June.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h4>Sign up below</h4>
-        <p>Takes 60 seconds. Just a name, email, and your child's grade. No application, no commitment.</p>
+        <h4>Sign up — takes 60 seconds</h4>
+        <p>Just your name, email, and your child's grade. No application. No commitment. No cost.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h4>We'll send a Zoom link</h4>
-        <p>You'll get a confirmation email with the Zoom link before each session you signed up for.</p>
+        <h4>Show up and try it</h4>
+        <p>You'll get a Zoom link before your session. Your child tries Novatio — for real.</p>
       </div>
     </div>
   </div>
@@ -544,52 +616,16 @@
       <h2 class="form-h2">Reserve your spot.</h2>
       <p class="form-sub">It's free. No commitment. You'll get a Zoom link before each session.</p>
 
-      <div class="selected-sessions-summary" id="form-summary">
-        <div class="sss-label">Sessions selected:</div>
-        <div class="sss-items" id="sss-list"><span class="sss-empty">None yet — select sessions above or check the boxes below.</span></div>
+      <!-- Dynamic selection summary -->
+      <div class="sessions-summary" id="ss-summary">
+        <div class="ss-title">Your selected sessions</div>
+        <div id="ss-list"><span class="ss-empty">No sessions selected yet — pick your dates above.</span></div>
+        <div class="ss-nudge" id="ss-nudge" style="display:none">
+          💡 Want the full experience? Sign up for all three sessions in the same week of June.
+        </div>
       </div>
 
       <form onsubmit="handleMainSubmit(event)">
-        <!-- Session checkboxes (visible on mobile / when cards not visible) -->
-        <div class="fg" style="margin-bottom:16px;">
-          <label style="font-size:12px;font-weight:700;color:#374151;margin-bottom:8px;display:block;">Which sessions would you like to attend?</label>
-          <div class="session-picker" id="form-picker">
-            <label class="spick" data-session="story">
-              <input type="checkbox" name="session" value="story" id="f-story" />
-              <div class="spick-check">
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="spick-info">
-                <div class="spick-title">Create Your Own Story</div>
-                <div class="spick-day">Tuesdays in June · 3:00 PM MST</div>
-              </div>
-              <span class="spick-type workshop">Workshop</span>
-            </label>
-            <label class="spick" data-session="game">
-              <input type="checkbox" name="session" value="game" id="f-game" />
-              <div class="spick-check">
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="spick-info">
-                <div class="spick-title">Build Your Own Video Game</div>
-                <div class="spick-day">Thursdays in June · 9:00 AM MST</div>
-              </div>
-              <span class="spick-type workshop">Workshop</span>
-            </label>
-            <label class="spick" data-session="social">
-              <input type="checkbox" name="session" value="social" id="f-social" />
-              <div class="spick-check">
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="spick-info">
-                <div class="spick-title">Meet Other Virtual Schoolers</div>
-                <div class="spick-day">Wednesdays in June · 12:00 PM MST</div>
-              </div>
-              <span class="spick-type social">Social</span>
-            </label>
-          </div>
-        </div>
-
         <div class="frow">
           <div class="fg"><label>First name *</label><input type="text" name="first_name" required placeholder="Sarah" /></div>
           <div class="fg"><label>Last name *</label><input type="text" name="last_name" required placeholder="Johnson" /></div>
@@ -620,7 +656,7 @@
         </div>
         <p class="consent">By submitting, you agree to receive texts and calls from Novatio about programs and enrollment. Reply STOP to opt out. <a href="https://novatio.school/privacy-policy" style="color:var(--orange)">Privacy Policy</a>.</p>
         <button type="submit" class="btn-submit">Reserve my spot — it's free →</button>
-        <p class="form-trust">✓ No commitment · No application required · You can unsubscribe anytime</p>
+        <p class="form-trust">✓ No commitment · No application required · Unsubscribe anytime</p>
       </form>
     </div>
   </div>
@@ -632,7 +668,7 @@
 <section class="learnmore-section">
   <div class="container">
     <h2>Curious about Novatio as a full-time school?</h2>
-    <p>Learn what makes Novatio different — 2-hour academics, AI-driven personalization, afternoon clubs, and tuition fully covered by ESA or TEFA. Or book a call with Karissa, our Head of School.</p>
+    <p>2-hour academics. AI-driven personalization. Afternoon clubs. Tuition fully covered by ESA or TEFA. Learn what makes Novatio different — or book a call with Karissa, our Head of School.</p>
     <a href="about.html" class="btn-learn">Learn about Novatio →</a>
     <p class="hint">Takes 5 minutes to read · No application required to attend sessions</p>
   </div>
@@ -659,125 +695,141 @@
 
 <!-- Mobile sticky CTA -->
 <div class="sticky-cta">
-  <button onclick="document.getElementById('signup-form').scrollIntoView({behavior:'smooth'})">Reserve your spot — it's free →</button>
+  <button onclick="document.getElementById('sessions').scrollIntoView({behavior:'smooth'})">Pick your session — it's free →</button>
 </div>
 
 <!-- ════════════════════════════════════════════════
      JAVASCRIPT
 ════════════════════════════════════════════════ -->
 <script>
-// ── HubSpot config ────────────────────────────────────────────────
-// TODO: Replace HS_FORM_GUID with the new form GUID after creating
-// the "Summer Sessions 2026 — Novatio" form in HubSpot portal 49158869.
-// Required form fields: firstname, lastname, email, phone,
-//   grade_eligibility, hs_state_code, summer_sessions_interested_in
+// ── HubSpot config ─────────────────────────────────────────────
 const HS_PORTAL = '49158869';
 const HS_FORM   = 'f7ea2971-f722-4be1-92a3-541c18c60298';
 
-// Session display names
+// ── State: session → { date, label } ──────────────────────────
+// e.g. { story: { date: 'June 2', label: 'Tue, Jun 2 · 3pm MST' } }
+const selectedDates = {};
+
 const SESSION_NAMES = {
-  story:  'Create Your Own Story (Tuesdays · 3pm MST)',
-  game:   'Build Your Own Video Game (Thursdays · 9am MST)',
-  social: 'Meet Other Virtual Schoolers (Wednesdays · 12pm MST)',
+  story:  'Create Your Own Story',
+  game:   'Build Your Own Video Game',
+  social: 'Meet Other Virtual Schoolers',
 };
 
-// Track selected sessions
-let selectedSessions = new Set();
+// ── Main card date picker ──────────────────────────────────────
+function pickDate(pill) {
+  const sess = pill.dataset.session;
+  const date = pill.dataset.date;
+  const label = pill.dataset.label;
 
-// ── Hero picker ────────────────────────────────────────────────
-document.querySelectorAll('#hero-picker .spick').forEach(label => {
-  label.addEventListener('click', () => {
-    const cb  = label.querySelector('input[type=checkbox]');
-    const sess = label.dataset.session;
-    // Toggle is handled by checkbox change
-    setTimeout(() => {
-      if (cb.checked) {
-        label.classList.add('selected');
-        selectedSessions.add(sess);
-        // Sync form picker
-        const fCb = document.getElementById('f-' + sess);
-        if (fCb) { fCb.checked = true; fCb.closest('.spick').classList.add('selected'); }
-      } else {
-        label.classList.remove('selected');
-        selectedSessions.delete(sess);
-        const fCb = document.getElementById('f-' + sess);
-        if (fCb) { fCb.checked = false; fCb.closest('.spick').classList.remove('selected'); }
-      }
-      updateSummary();
-    }, 0);
-  });
-});
+  // If already selected, deselect
+  if (pill.classList.contains('selected')) {
+    pill.classList.remove('selected');
+    delete selectedDates[sess];
+    document.querySelector('#main-cards [data-session="'+sess+'"]').classList.remove('has-date');
+    syncHcRow(sess, null);
+    updateSummary();
+    return;
+  }
 
-// ── Form picker ────────────────────────────────────────────────
-document.querySelectorAll('#form-picker .spick').forEach(label => {
-  label.addEventListener('click', () => {
-    const cb  = label.querySelector('input[type=checkbox]');
-    const sess = label.dataset.session;
-    setTimeout(() => {
-      if (cb.checked) {
-        label.classList.add('selected');
-        selectedSessions.add(sess);
-        // Sync main cards
-        const mainCard = document.querySelector('#main-session-cards [data-session="'+sess+'"]');
-        if (mainCard) mainCard.classList.add('selected');
-        // Sync hero picker
-        const heroPick = document.querySelector('#hero-picker [data-session="'+sess+'"]');
-        if (heroPick) { heroPick.classList.add('selected'); heroPick.querySelector('input').checked = true; }
-      } else {
-        label.classList.remove('selected');
-        selectedSessions.delete(sess);
-        const mainCard = document.querySelector('#main-session-cards [data-session="'+sess+'"]');
-        if (mainCard) mainCard.classList.remove('selected');
-        const heroPick = document.querySelector('#hero-picker [data-session="'+sess+'"]');
-        if (heroPick) { heroPick.classList.remove('selected'); heroPick.querySelector('input').checked = false; }
-      }
-      updateSummary();
-    }, 0);
-  });
-});
+  // Deselect any other pill in this session
+  document.querySelectorAll('.sc-pill[data-session="'+sess+'"]').forEach(p => p.classList.remove('selected'));
+  pill.classList.add('selected');
 
-// ── Main cards (click to toggle) ──────────────────────────────
-function toggleMainCard(card) {
-  const sess = card.dataset.session;
-  card.classList.toggle('selected');
-  const isNowSelected = card.classList.contains('selected');
+  selectedDates[sess] = { date, label };
+  document.querySelector('#main-cards [data-session="'+sess+'"]').classList.add('has-date');
+  syncHcRow(sess, date);
+  updateSummary();
+}
 
-  if (isNowSelected) {
-    selectedSessions.add(sess);
-    // Sync pickers
-    syncPicker('#hero-picker', sess, true);
-    syncPicker('#form-picker', sess, true);
+// ── Hero card row toggle (expand / collapse dates) ─────────────
+function toggleHcRow(row) {
+  // If clicking a pill button inside, don't toggle the row
+  if (event && event.target.classList.contains('hc-pill')) return;
+  row.classList.toggle('open');
+}
+
+// ── Hero card date pick ────────────────────────────────────────
+function pickHcDate(e, pill) {
+  e.stopPropagation(); // don't bubble to toggleHcRow
+  const sess = pill.dataset.session;
+  const date = pill.dataset.date;
+  const label = pill.dataset.label;
+  const row = pill.closest('.hc-row');
+
+  // Deselect all other pills in this session row
+  row.querySelectorAll('.hc-pill').forEach(p => p.classList.remove('selected'));
+
+  if (selectedDates[sess] && selectedDates[sess].date === date) {
+    // Toggle off
+    delete selectedDates[sess];
+    row.classList.remove('selected');
+    syncMainCard(sess, null);
   } else {
-    selectedSessions.delete(sess);
-    syncPicker('#hero-picker', sess, false);
-    syncPicker('#form-picker', sess, false);
+    pill.classList.add('selected');
+    selectedDates[sess] = { date, label };
+    row.classList.add('selected');
+    syncMainCard(sess, date);
   }
   updateSummary();
 }
 
-function syncPicker(pickerSelector, sess, checked) {
-  const pick = document.querySelector(pickerSelector + ' [data-session="'+sess+'"]');
-  if (!pick) return;
-  const cb = pick.querySelector('input[type=checkbox]');
-  cb.checked = checked;
-  checked ? pick.classList.add('selected') : pick.classList.remove('selected');
-}
-
-// ── Summary update ─────────────────────────────────────────────
-function updateSummary() {
-  const list = document.getElementById('sss-list');
-  if (selectedSessions.size === 0) {
-    list.innerHTML = '<span class="sss-empty">None yet — select sessions above or check the boxes below.</span>';
+// ── Sync hero card row from main card selection ────────────────
+function syncHcRow(sess, date) {
+  const row = document.querySelector('#hc-sessions [data-session="'+sess+'"]');
+  if (!row) return;
+  row.querySelectorAll('.hc-pill').forEach(p => p.classList.remove('selected'));
+  if (date) {
+    row.classList.add('selected', 'open');
+    const pill = row.querySelector('[data-date="'+date+'"]');
+    if (pill) pill.classList.add('selected');
   } else {
-    list.innerHTML = Array.from(selectedSessions).map(s => '✓ ' + SESSION_NAMES[s]).join('<br>');
+    row.classList.remove('selected');
   }
 }
 
-// ── Submit helpers ─────────────────────────────────────────────
-function getSessionsValue() {
-  return Array.from(selectedSessions).map(s => SESSION_NAMES[s]).join('; ') || 'None selected';
+// ── Sync main card from hero card selection ────────────────────
+function syncMainCard(sess, date) {
+  const card = document.querySelector('#main-cards [data-session="'+sess+'"]');
+  if (!card) return;
+  card.querySelectorAll('.sc-pill').forEach(p => p.classList.remove('selected'));
+  if (date) {
+    card.classList.add('has-date');
+    const pill = card.querySelector('[data-date="'+date+'"]');
+    if (pill) pill.classList.add('selected');
+  } else {
+    card.classList.remove('has-date');
+  }
 }
 
+// ── Summary panel ──────────────────────────────────────────────
+function updateSummary() {
+  const list = document.getElementById('ss-list');
+  const nudge = document.getElementById('ss-nudge');
+  const keys = Object.keys(selectedDates);
+
+  if (keys.length === 0) {
+    list.innerHTML = '<span class="ss-empty">No sessions selected yet — pick your dates above.</span>';
+    nudge.style.display = 'none';
+    return;
+  }
+
+  list.innerHTML = keys.map(k => {
+    const s = selectedDates[k];
+    return `<div class="ss-item"><span class="dot"></span><span>${SESSION_NAMES[k]}</span><span class="ss-date">· ${s.label}</span></div>`;
+  }).join('');
+
+  nudge.style.display = keys.length < 3 ? 'block' : 'none';
+}
+
+// ── Build HubSpot value string ──────────────────────────────────
+function getSessionsValue() {
+  return Object.keys(selectedDates)
+    .map(k => `${SESSION_NAMES[k]} – ${selectedDates[k].date}`)
+    .join('; ') || 'None selected';
+}
+
+// ── HubSpot submit ─────────────────────────────────────────────
 async function submitToHubSpot(formData) {
   const fields = [
     { name: 'firstname',                     value: formData.first_name },
@@ -808,7 +860,7 @@ function successHTML() {
     <div style="font-size:52px;margin-bottom:16px;">🎉</div>
     <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;margin-bottom:10px;color:#222625;">You're in!</h3>
     <p style="color:#6B7280;font-size:14px;line-height:1.75;max-width:340px;margin:0 auto;">
-      Check your email — we'll send you a Zoom link before each session you signed up for.
+      We'll send your Zoom link before your session.
       Questions? Text us at <a href="tel:520-375-3356" style="color:var(--orange);font-weight:600;">(520) 375-3356</a>.
     </p>
   </div>`;
@@ -821,7 +873,7 @@ async function handleHeroSubmit(e) {
   btn.textContent = 'Submitting…'; btn.disabled = true;
   const data = Object.fromEntries(new FormData(form));
   await submitToHubSpot(data);
-  form.innerHTML = successHTML();
+  form.closest('.hero-card').innerHTML = successHTML();
 }
 
 async function handleMainSubmit(e) {
