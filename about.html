@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Novatio School — AI-Driven Virtual School for Grades 4–8 | Book a Call</title>
+  <meta name="description" content="Novatio is a private, virtual, AI-driven school for grades 4–8. Students master academics in 2 focused hours, then spend afternoons on real-world skills. ESA and TEFA approved. Cognia certified. Book a call with Karissa, our Head of School." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN TOKENS ────────────────────────────────────────── */
+    :root {
+      --dark:    #222625;
+      --orange:  #FC4B0C;
+      --orange2: #FF9437;
+      --blue:    #6BACF1;
+      --purple:  #C37AD6;
+      --cream:   #FFF8F3;
+      --warm:    #FBF6F2;
+      --white:   #FFFFFF;
+      --text:    #222625;
+      --muted:   #6B7280;
+      --border:  #E5E7EB;
+      --yellow:  #FFFFAC;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1,h2,h3,h4 { font-family: 'Bricolage Grotesque', sans-serif; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .section { padding: 72px 0; }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .section-label.white { color: rgba(255,255,255,.6); }
+    .section-h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(26px,3vw,42px); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .section-sub { font-size: 15px; color: var(--muted); max-width: 560px; line-height: 1.75; }
+
+    /* ── NAV ─────────────────────────────────────────────────── */
+    nav { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 14px 28px; }
+    .nav-logo img { height: 24px; width: auto; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-back { font-size: 13px; font-weight: 600; color: var(--muted); }
+    .nav-back:hover { color: var(--dark); }
+    .btn-nav { padding: 10px 20px; border-radius: 10px; background: var(--orange); color: #fff; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; border: none; cursor: pointer; transition: opacity .2s; }
+    .btn-nav:hover { opacity: .88; }
+
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero { background: var(--dark); color: #fff; padding: 72px 0 80px; position: relative; overflow: hidden; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center; position: relative; z-index: 2; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; background: rgba(252,75,12,.2); color: var(--orange2); border: 1px solid rgba(252,75,12,.3); margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(28px,3.5vw,50px); font-weight: 800; color: #fff; letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 18px; }
+    .hero h1 span { color: var(--yellow); }
+    .hero-sub { font-size: 16px; color: rgba(255,255,255,.7); line-height: 1.75; margin-bottom: 28px; max-width: 480px; }
+    .hero-sub strong { color: #fff; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .htag { display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; background: rgba(255,255,255,.08); color: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.15); }
+    .btn-hero { display: inline-block; padding: 16px 36px; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 17px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; transition: opacity .2s; }
+    .btn-hero:hover { opacity: .88; }
+    .hero-or { font-size: 13px; color: rgba(255,255,255,.4); margin-top: 10px; }
+    .hero-or a { color: var(--orange2); font-weight: 600; }
+    .hero-or a:hover { text-decoration: underline; }
+
+    /* Karissa card */
+    .karissa-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 28px 24px; }
+    .karissa-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 14px; }
+    .karissa-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 2px; }
+    .karissa-title { font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 16px; }
+    .karissa-bio { font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.65; margin-bottom: 20px; }
+    .btn-book { display: block; width: 100%; padding: 13px; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 800; border: none; border-radius: 10px; cursor: pointer; transition: opacity .2s; text-align: center; }
+    .btn-book:hover { opacity: .88; }
+    .book-note { font-size: 11px; color: rgba(255,255,255,.35); text-align: center; margin-top: 8px; }
+
+    /* ── STATS BAR ───────────────────────────────────────────── */
+    .stats-bar { background: var(--orange); padding: 20px 0; }
+    .stats-inner { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .stat-item { text-align: center; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,.2); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 28px; font-weight: 800; color: var(--yellow); letter-spacing: -1px; line-height: 1; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,.8); margin-top: 2px; }
+
+    /* ── HOW IT WORKS ────────────────────────────────────────── */
+    .how-section { background: var(--warm); }
+    .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .day-block { background: #fff; border-radius: 20px; padding: 28px 24px; border: 1.5px solid var(--border); }
+    .day-block-icon { font-size: 32px; margin-bottom: 12px; }
+    .day-block-time { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
+    .day-block-time.morning { background: #FEF3C7; color: #92400E; }
+    .day-block-time.afternoon { background: #EDE9FE; color: #5B21B6; }
+    .day-block h3 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+    .day-block p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .day-block ul { list-style: none; padding: 0; margin-top: 12px; }
+    .day-block ul li { font-size: 13px; color: #374151; padding: 4px 0; padding-left: 18px; position: relative; line-height: 1.5; }
+    .day-block ul li::before { content: '✓'; position: absolute; left: 0; color: var(--orange); font-weight: 700; font-size: 11px; top: 6px; }
+    .schedule-strip { background: var(--dark); border-radius: 16px; margin-top: 32px; padding: 20px 24px; display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+    .sched-col { text-align: center; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,.1); }
+    .sched-col:last-child { border-right: none; }
+    .sched-time-lbl { font-size: 11px; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .sched-time-val { font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 800; color: var(--yellow); }
+    .sched-time-desc { font-size: 11px; color: rgba(255,255,255,.55); margin-top: 2px; }
+
+    /* ── PROOF ───────────────────────────────────────────────── */
+    .proof-section { background: var(--orange); padding: 64px 0; }
+    .proof-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 36px; }
+    .proof-card { background: rgba(255,255,255,.1); border-radius: 16px; padding: 24px 20px; }
+    .proof-stars { color: var(--yellow); font-size: 14px; margin-bottom: 10px; letter-spacing: 2px; }
+    .proof-quote { font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 700; color: #fff; line-height: 1.45; margin-bottom: 10px; font-style: italic; }
+    .proof-by { font-size: 12px; color: rgba(255,255,255,.6); }
+
+    /* ── CLUBS ───────────────────────────────────────────────── */
+    .clubs-section { background: var(--cream); }
+    .clubs-note { background: #fff; border: 1.5px solid rgba(252,75,12,.15); border-radius: 12px; padding: 14px 18px; font-size: 13px; color: #374151; line-height: 1.6; margin-bottom: 32px; max-width: 600px; }
+    .clubs-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .club-card { background: #fff; border: 1.5px solid var(--border); border-radius: 16px; padding: 20px; transition: border-color .2s, box-shadow .2s; }
+    .club-card:hover { border-color: rgba(252,75,12,.3); box-shadow: 0 6px 20px rgba(0,0,0,.07); }
+    .club-icon { font-size: 28px; margin-bottom: 10px; }
+    .club-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .club-skill { font-size: 10px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .club-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+    /* ── WHO IT'S FOR ────────────────────────────────────────── */
+    .who-section { background: var(--white); }
+    .who-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 36px; }
+    .who-card { border-radius: 16px; padding: 24px; }
+    .who-card.blue   { background: var(--blue); color: #fff; }
+    .who-card.purple { background: var(--purple); color: #fff; }
+    .who-card.orange2 { background: var(--orange2); color: #fff; }
+    .who-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+    .who-card p { font-size: 13px; line-height: 1.65; opacity: .88; }
+    .who-card ul { list-style: none; padding: 0; margin-top: 12px; }
+    .who-card ul li { font-size: 12px; padding: 3px 0; padding-left: 16px; position: relative; opacity: .85; }
+    .who-card ul li::before { content: '"'; position: absolute; left: 0; font-weight: 700; }
+
+    /* ── TUITION ─────────────────────────────────────────────── */
+    .tuition-section { background: var(--warm); }
+    .tuition-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 36px; }
+    .tuition-card { background: #fff; border-radius: 16px; padding: 24px; border: 1.5px solid var(--border); }
+    .tuition-card.featured { border-color: var(--orange); }
+    .tuition-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    .tuition-badge.az { background: #FEF3C7; color: #92400E; }
+    .tuition-badge.tx { background: #DCFCE7; color: #166534; }
+    .tuition-badge.oos { background: #F3F4F6; color: #374151; }
+    .tuition-price { font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 800; color: var(--dark); letter-spacing: -1px; margin-bottom: 4px; }
+    .tuition-price.free { color: var(--orange); }
+    .tuition-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* ── BOOK A CALL ─────────────────────────────────────────── */
+    .book-section { background: var(--dark); padding: 80px 0; }
+    .book-inner { display: grid; grid-template-columns: 1fr 460px; gap: 60px; align-items: start; }
+    .book-copy h2 { font-size: clamp(26px,3vw,42px); font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 14px; }
+    .book-copy p { font-size: 15px; color: rgba(255,255,255,.7); line-height: 1.75; margin-bottom: 20px; max-width: 440px; }
+    .book-bullets { list-style: none; padding: 0; }
+    .book-bullets li { font-size: 14px; color: rgba(255,255,255,.75); padding: 5px 0; padding-left: 22px; position: relative; line-height: 1.55; }
+    .book-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--orange2); font-weight: 700; }
+    .book-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 32px 28px; }
+    .krow { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .kavatar { width: 56px; height: 56px; border-radius: 50%; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .kinfo-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 17px; font-weight: 800; color: #fff; }
+    .kinfo-title { font-size: 12px; color: rgba(255,255,255,.5); }
+    .kbio { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 24px; }
+    .call-points { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .call-point { display: flex; align-items: flex-start; gap: 10px; }
+    .call-point-icon { width: 28px; height: 28px; border-radius: 8px; background: rgba(252,75,12,.2); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .call-point-text { font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.5; padding-top: 4px; }
+    .btn-book-main { display: block; width: 100%; padding: 15px; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; transition: opacity .2s; text-align: center; }
+    .btn-book-main:hover { opacity: .88; }
+    .book-alt { font-size: 12px; color: rgba(255,255,255,.35); text-align: center; margin-top: 10px; }
+    .book-alt a { color: var(--orange2); }
+
+    /* ── FAQ ─────────────────────────────────────────────────── */
+    .faq-section { background: var(--cream); }
+    .faq-list { max-width: 720px; margin: 36px auto 0; display: flex; flex-direction: column; gap: 6px; }
+    .faq-item { border-radius: 14px; border: 1.5px solid var(--border); background: #fff; overflow: hidden; }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 22px; cursor: pointer; user-select: none; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 700; color: var(--dark); }
+    .faq-q:hover { background: var(--warm); }
+    .faq-chevron { font-size: 18px; color: #D1D5DB; transition: transform .25s; flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 22px 18px; font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-q { color: var(--orange); }
+
+    /* ── SESSIONS CTA ────────────────────────────────────────── */
+    .sessions-cta { background: var(--orange); padding: 64px 0; text-align: center; }
+    .sessions-cta h2 { font-size: clamp(22px,2.5vw,34px); font-weight: 800; color: #fff; margin-bottom: 10px; letter-spacing: -.5px; }
+    .sessions-cta p { font-size: 15px; color: rgba(255,255,255,.8); margin-bottom: 28px; }
+    .btn-sessions { display: inline-block; padding: 15px 36px; background: #fff; color: var(--orange); font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; transition: opacity .2s; }
+    .btn-sessions:hover { opacity: .88; }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer { background: #151A18; color: rgba(255,255,255,.55); padding: 36px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo img { height: 22px; width: auto; opacity: .6; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,.4); transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.7); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .hero-inner, .book-inner, .day-grid { grid-template-columns: 1fr; }
+      .karissa-card { max-width: 440px; }
+      .clubs-grid { grid-template-columns: repeat(2,1fr); }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .who-grid { grid-template-columns: 1fr; max-width: 440px; margin: 36px auto 0; }
+    }
+    @media (max-width: 640px) {
+      .clubs-grid, .tuition-grid, .proof-grid { grid-template-columns: 1fr; }
+      .schedule-strip { grid-template-columns: 1fr; }
+      .sched-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); padding: 10px 16px; }
+      .sched-col:last-child { border-bottom: none; }
+      .nav-back { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://cdn.prod.website-files.com/687c139d7d1362f24d06d2ba/687c2d0dc0455a56ea3aef16_Novatio%20Primary%20Logo%20-%20Dark.svg"
+           alt="Novatio" />
+    </a>
+    <div class="nav-right">
+      <a href="index.html" class="nav-back">← Summer Sessions</a>
+      <button class="btn-nav" onclick="document.getElementById('book-call').scrollIntoView({behavior:'smooth'})">Book a Call →</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+
+      <div>
+        <div class="hero-eyebrow">✦ PRIVATE · VIRTUAL · GRADES 4–8</div>
+        <h1>School that actually prepares them<br>for <span>what comes next.</span></h1>
+        <p class="hero-sub">
+          Novatio is a private, virtual, AI-driven school for students in grades 4–8.
+          <strong>Two focused hours of academics each morning.</strong>
+          Then afternoons of real-world skills — entrepreneurship, coding,
+          financial literacy, public speaking, and more.
+          Done by 2pm. No homework.
+        </p>
+        <div class="hero-tags">
+          <span class="htag">$0 with Arizona ESA</span>
+          <span class="htag">$0 with Texas TEFA</span>
+          <span class="htag">Cognia Certified</span>
+          <span class="htag">4.6× Learning Growth</span>
+          <span class="htag">No Homework</span>
+          <span class="htag">Done by 2pm</span>
+        </div>
+        <a href="https://meetings.hubspot.com/karissa-ham" class="btn-hero" target="_blank" rel="noopener">Book a call with Karissa →</a>
+        <p class="hero-or">
+          Or <a href="index.html">sign up for a free June session</a> first — no commitment required.
+        </p>
+      </div>
+
+      <div>
+        <div class="karissa-card">
+          <div class="karissa-avatar">K</div>
+          <div class="karissa-name">Karissa Ham</div>
+          <div class="karissa-title">Head of School, Novatio</div>
+          <p class="karissa-bio">
+            Karissa has guided hundreds of families through the decision to join Novatio.
+            She'll answer every question honestly — and tell you upfront if it's not the right fit.
+          </p>
+          <a href="https://meetings.hubspot.com/karissa-ham" class="btn-book" target="_blank" rel="noopener">Book a free call →</a>
+          <p class="book-note">Free · 30 minutes · No pressure</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">4.6×</div>
+        <div class="stat-label">faster learning growth</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2 hrs</div>
+        <div class="stat-label">of academics per day</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">out-of-pocket for AZ + TX</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2pm</div>
+        <div class="stat-label">school done, no homework</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════ -->
+<section class="section how-section">
+  <div class="container">
+    <div class="section-label">HOW NOVATIO WORKS</div>
+    <h2 class="section-h2">Two hours of school. A full afternoon of life.</h2>
+    <p class="section-sub">Novatio is built around a simple idea: students don't need six hours of seat time to master academics. Two focused, personalized hours is enough — and that frees up the rest of the day for something more.</p>
+
+    <div class="day-grid" style="margin-top:36px;">
+
+      <div class="day-block">
+        <div class="day-block-icon">🌅</div>
+        <span class="day-block-time morning">8:00 AM – 12:00 PM</span>
+        <h3>Morning Academic Block</h3>
+        <p>Students log in anytime during the 8–10am window for a 2-hour focused learning session. AI-driven, personalized to their exact level — not their grade, their actual skill.</p>
+        <ul>
+          <li>30-min Morning Launch with teacher (games, puzzles, mindfulness)</li>
+          <li>Personalized academic work across 5 subjects</li>
+          <li>25-min work / 5-min break rhythm — proven for deep focus</li>
+          <li>1:1 academic coach + AI tutor always available</li>
+          <li>80% daily mastery standard — no moving on until it sticks</li>
+        </ul>
+      </div>
+
+      <div class="day-block">
+        <div class="day-block-icon">🎨</div>
+        <span class="day-block-time afternoon">12:00 PM – 2:00 PM</span>
+        <h3>Novatio Clubs (Afternoons)</h3>
+        <p>Students choose 4 clubs per session. Each club is built around a real-world life skill — not "busy work." Taught by teachers who love what they're doing.</p>
+        <ul>
+          <li>Entrepreneurship, coding, financial literacy, public speaking</li>
+          <li>Art, robotics, teamwork, goal-setting</li>
+          <li>Project-based — students leave with real work to show</li>
+          <li>Harvard Business School simulation (students outperform MBAs)</li>
+          <li>Friends from across the country who share their interests</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="schedule-strip">
+      <div class="sched-col">
+        <div class="sched-time-lbl">Off-screen break</div>
+        <div class="sched-time-val">11am – 12pm</div>
+        <div class="sched-time-desc">Lunch + outdoor play</div>
+      </div>
+      <div class="sched-col">
+        <div class="sched-time-lbl">No homework</div>
+        <div class="sched-time-val">2:00 PM</div>
+        <div class="sched-time-desc">School is done for the day</div>
+      </div>
+      <div class="sched-col">
+        <div class="sched-time-lbl">Total screen time</div>
+        <div class="sched-time-val">~4.5 hrs</div>
+        <div class="sched-time-desc">vs. 6–7 hours in traditional school</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     PROOF — TESTIMONIALS
+════════════════════════════════════════════════ -->
+<section class="proof-section">
+  <div class="container">
+    <div class="section-label white">WHAT FAMILIES SAY</div>
+    <h2 class="section-h2" style="color:#fff;">They weren't expecting this.</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-quote">"We were watching our son fall through the cracks until Novatio. Now he's excited about learning again and feels understood."</p>
+        <div class="proof-by">Novatio parent</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-quote">"I really like how I can learn at my own pace, and be able to go ahead of my grade."</p>
+        <div class="proof-by">Novatio student</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-quote">"I made my first friend in three years."</p>
+        <div class="proof-by">Virtual student, first week at Novatio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CLUBS
+════════════════════════════════════════════════ -->
+<section class="section clubs-section">
+  <div class="container">
+    <div class="section-label">AFTERNOON CLUBS</div>
+    <h2 class="section-h2">Eight clubs. Real skills.</h2>
+    <div class="clubs-note">
+      Students choose 4 clubs per session. <strong>Level Up is mandatory for all students on Mondays</strong> — it's a Yale-designed course on the science of well-being and habits. The rest is their choice.
+    </div>
+    <div class="clubs-grid">
+      <div class="club-card">
+        <div class="club-icon">🎯</div>
+        <div class="club-name">Level Up</div>
+        <div class="club-skill">Goal Setting & Habits</div>
+        <p class="club-desc">Yale's Science of Well-Being — build habits that affect performance, mood, and motivation. Mandatory, Mondays.</p>
+      </div>
+      <div class="club-card">
+        <div class="club-icon">🎮</div>
+        <div class="club-name">Game On</div>
+        <div class="club-skill">Coding</div>
+        <p class="club-desc">Build and publish a Scratch game that earns 100+ likes from a real audience.</p>
+      </div>
+      <div class="club-card">
+        <div class="club-icon">💰</div>
+        <div class="club-name">Wealth Builders</div>
+        <div class="club-skill">Financial Literacy</div>
+        <p class="club-desc">Live 20 years of future decisions via GoVenture — students score higher than most adults on national financial tests.</p>
+      </div>
+      <div class="club-card">
+        <div class="club-icon">🎤</div>
+        <div class="club-name">On Air</div>
+        <div class="club-skill">Public Speaking</div>
+        <p class="club-desc">Become a real sports broadcaster. Record and share a show. Think on your feet.</p>
+      </div>
+      <div class="club-card">
+        <div class="club-icon">🤝</div>
+        <div class="club-name">Mission: Everest</div>
+        <div class="club-skill">Teamwork</div>
+        <p class="club-desc">Weekly escape rooms + the Harvard Business School Everest Simulation. Only 55% of Harvard students complete it. Novatio students do.</p>
+      </div>
+      <div class="club-card">
+        <div class="club-icon">🤖</div>
+        <div class="club-name">RoboLab</div>
+        <div class="club-skill">Coding + STEM</div>
+        <p class="club-desc">Program virtual robots through mazes, ocean floors, and self-driving challenges. Problem-solving and grit.</p>
+      </div>
+      <div class="club-card">
+        <div class="club-icon">🏔️</div>
+        <div class="club-name">The Summit</div>
+        <div class="club-skill">Critical Thinking</div>
+        <p class="club-desc">UN diplomat-style debates — argue the side you disagree with. Evidence-based reasoning, multiple perspectives.</p>
+      </div>
+      <div class="club-card">
+        <div class="club-icon">🎨</div>
+        <div class="club-name">The Artist Project</div>
+        <div class="club-skill">Expertise & Research</div>
+        <p class="club-desc">Create original art and go deep on one artist to become a genuine expert. Research skills that transfer everywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     WHO IT'S FOR
+════════════════════════════════════════════════ -->
+<section class="section who-section">
+  <div class="container">
+    <div class="section-label">WHO BELONGS AT NOVATIO</div>
+    <h2 class="section-h2">Every kind of learner.</h2>
+    <p class="section-sub">Novatio works for neurotypical, gifted, and neurodiverse students in grades 4–8. If traditional school has been the wrong fit — for any reason — this is worth looking at.</p>
+    <div class="who-grid">
+      <div class="who-card blue">
+        <h3>The student who's been held back</h3>
+        <p>Behind grade level, not getting the support they need, or falling through the cracks. Novatio's AI-driven system fills gaps without judgment and lets them catch up fast.</p>
+        <ul>
+          <li>My child is so smart but their grades don't show it</li>
+          <li>Their IEP isn't being followed</li>
+          <li>They've switched schools twice and nothing's worked</li>
+        </ul>
+      </div>
+      <div class="who-card purple">
+        <h3>The student who's bored</h3>
+        <p>Finishing the work and then waiting. Six hours a day of material they already know. Novatio lets them move at their own pace — often two grade levels in one year.</p>
+        <ul>
+          <li>They're tutoring their classmates because they're that far ahead</li>
+          <li>Grades are dropping from disengagement, not inability</li>
+          <li>They've stopped trying because school doesn't challenge them</li>
+        </ul>
+      </div>
+      <div class="who-card orange2">
+        <h3>The family ready for something different</h3>
+        <p>Homeschooling families who need more support. Private school families who've heard about ESA. Families who've been researching alternatives and want to see it in action.</p>
+        <ul>
+          <li>We love homeschooling but I'm running out of capacity</li>
+          <li>We didn't know ESA could cover this</li>
+          <li>I want them to have flexibility and real-world skills</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     TUITION
+════════════════════════════════════════════════ -->
+<section class="section tuition-section">
+  <div class="container">
+    <div class="section-label">TUITION</div>
+    <h2 class="section-h2">Most families pay nothing.</h2>
+    <p class="section-sub">Arizona and Texas have education savings account programs that cover Novatio in full. If you're outside those states, financial aid is available.</p>
+    <div class="tuition-grid" style="margin-top:32px;">
+      <div class="tuition-card featured">
+        <span class="tuition-badge az">Arizona — ESA</span>
+        <div class="tuition-price free">$0</div>
+        <p class="tuition-desc">The Arizona Empowerment Scholarship Account (ESA) covers $7,000/year — enough to fully fund Novatio. Every AZ K–12 student qualifies. No income limit.</p>
+      </div>
+      <div class="tuition-card featured">
+        <span class="tuition-badge tx">Texas — TEFA</span>
+        <div class="tuition-price free">$0</div>
+        <p class="tuition-desc">Texas Education Freedom Accounts (TEFA) cover Novatio for eligible TX families. Check your eligibility with Karissa on your call.</p>
+      </div>
+      <div class="tuition-card">
+        <span class="tuition-badge oos">Out of State</span>
+        <div class="tuition-price">$10K</div>
+        <p class="tuition-desc">$10,000/year for families outside AZ and TX. Financial aid is available — book a call with Karissa to discuss your options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     BOOK A CALL
+════════════════════════════════════════════════ -->
+<section class="book-section" id="book-call">
+  <div class="container">
+    <div class="book-inner">
+
+      <div class="book-copy">
+        <div class="section-label white">BOOK A CALL</div>
+        <h2>Talk to Karissa.</h2>
+        <p>
+          Karissa Ham is Novatio's Head of School. She's been guiding families since day one — not a salesperson, not a form letter.
+          A real conversation about whether Novatio is the right fit for your family.
+        </p>
+        <ul class="book-bullets">
+          <li>She'll walk you through a typical school day</li>
+          <li>Answer your specific questions about your child's learning profile</li>
+          <li>Explain exactly how ESA or TEFA works for your situation</li>
+          <li>Tell you honestly if Novatio isn't the right fit</li>
+          <li>Walk you through next steps if you want to move forward</li>
+        </ul>
+        <p style="margin-top:24px;font-size:13px;">
+          Prefer to reach us first? Text <a href="tel:520-375-3356" style="color:var(--orange2);font-weight:600;">(520) 375-3356</a> or email <a href="mailto:admissions@novatio.school" style="color:var(--orange2);font-weight:600;">admissions@novatio.school</a>
+        </p>
+      </div>
+
+      <div>
+        <div class="book-card" id="calendly-container">
+          <div class="krow">
+            <div class="kavatar">K</div>
+            <div>
+              <div class="kinfo-name">Karissa Ham</div>
+              <div class="kinfo-title">Head of School, Novatio</div>
+            </div>
+          </div>
+          <p class="kbio">
+            Karissa has worked with hundreds of families — kids who were falling behind, kids who were bored, kids who just didn't fit
+            in traditional school. She'll answer every question you have.
+          </p>
+          <div class="call-points">
+            <div class="call-point">
+              <div class="call-point-icon">⏱</div>
+              <div class="call-point-text">30 minutes · Free · No commitment required</div>
+            </div>
+            <div class="call-point">
+              <div class="call-point-icon">📅</div>
+              <div class="call-point-text">Pick a time that works for you — evenings and weekends available</div>
+            </div>
+            <div class="call-point">
+              <div class="call-point-icon">🤝</div>
+              <div class="call-point-text">Real conversation — not a pitch deck</div>
+            </div>
+          </div>
+
+          <!-- ═══════════════════════════════════════
+               CALENDLY EMBED — replace the href below with Karissa's Calendly link.
+               Option A: Inline widget (recommended)
+                 Add <div class="calendly-inline-widget" data-url="YOUR_LINK" style="min-width:320px;height:380px;"></div>
+                 <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+               Option B: Button link
+                 Update the href below with Karissa's actual Calendly link.
+               ═══════════════════════════════════════ -->
+          <a href="https://meetings.hubspot.com/karissa-ham" class="btn-book-main" target="_blank" rel="noopener">
+            Schedule a free call with Karissa →
+          </a>
+          <p class="book-alt">
+            Or text us at <a href="tel:520-375-3356">(520) 375-3356</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════ -->
+<section class="section faq-section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">COMMON QUESTIONS</div>
+    <h2 class="section-h2">Answers before you ask.</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is Novatio a real school — accredited and everything?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Yes. Novatio is Cognia certified, which is the same accreditation body used by tens of thousands of schools worldwide. Students receive official transcripts. Credits transfer. For Arizona and Texas families, it's also approved under the ESA and TEFA programs respectively.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What does a typical day look like?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Students log in anytime during the 8–10am window. They start with a 30-min Morning Launch with their teacher — games, mindfulness, puzzles. Then 2 hours of personalized academic work with 25-min work / 5-min break cycles. Lunch and outside time from 11am–noon. Novatio Clubs from 12–2pm. Done by 2pm. No homework.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if my child has an IEP, ADHD, dyslexia, or other learning differences?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Novatio is a strong fit for neurodiverse learners. The AI-driven system adapts to each student's individual pace and profile. Text-to-speech accommodations are built in. Novatio students with dyslexia have shown up to 2× faster progress across all subjects compared to traditional school averages. Karissa can walk you through how it works for your child specifically.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Will my child be lonely? Do they make friends?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">This comes up on almost every enrollment call. Novatio students form genuine friendships — they spend afternoons together in clubs, working on shared projects, playing games, competing in challenges. One student said it best: "I made my first friend in three years." Afternoon clubs are designed specifically to build connection, not just skills.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How does the ESA work in Arizona?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">The Arizona Empowerment Scholarship Account (ESA) is a state education savings account that gives eligible K–12 families $7,000/year to use toward approved educational programs — including Novatio. Every Arizona student qualifies regardless of income. You apply through the AZ Department of Education, activate a ClassWallet account, and select Novatio as your provider. Karissa walks every AZ family through this process on the enrollment call.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What's the difference between Novatio and Unbound Academy?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Both schools use the same 2-hour learning model and afternoon clubs. The key difference: Novatio is a private school ($0 with ESA/TEFA, or $10K out-of-state) and doesn't require state standardized testing. Unbound Academy is a public charter school — completely tuition-free for Arizona students but does require state testing. Karissa and the Unbound admissions team can help you figure out which is the better fit.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          When can my child start?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Enrollment is open for the 2025–26 school year (now) and the 2026–27 school year. Spots are limited. If you're considering Novatio for fall, it's worth booking a call with Karissa soon — the ESA application process in Arizona takes a few weeks to process. Book a call and she'll walk you through the timeline.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SESSIONS CTA
+════════════════════════════════════════════════ -->
+<section class="sessions-cta">
+  <div class="container">
+    <h2>Not ready to commit? Try a session this June.</h2>
+    <p>Three free virtual sessions in June — open to all students grades 4–8. See Novatio in action before you decide anything.</p>
+    <a href="index.html" class="btn-sessions">Sign up for a free session →</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="https://cdn.prod.website-files.com/687c139d7d1362f24d06d2ba/687c2d0dc0455a56ea3aef16_Novatio%20Primary%20Logo%20-%20Dark.svg" alt="Novatio" />
+      </div>
+      <div class="footer-links">
+        <a href="https://novatio.school">novatio.school</a>
+        <a href="https://novatio.school/privacy-policy">Privacy Policy</a>
+        <a href="mailto:admissions@novatio.school">admissions@novatio.school</a>
+        <a href="tel:520-375-3356">(520) 375-3356</a>
+      </div>
+      <div class="footer-copy">© 2026 The Novatio School. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════ -->
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  item.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
