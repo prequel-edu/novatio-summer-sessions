@@ -157,6 +157,8 @@
     .sc-cal { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: var(--muted); text-decoration: none; margin-top: 10px; opacity: .65; transition: opacity .15s; }
     .sc-cal:hover { opacity: 1; color: var(--orange); }
     .sc-cal svg { width: 11px; height: 11px; flex-shrink: 0; }
+    .sc-selected-confirm { display: none; margin-top: 10px; padding: 8px 12px; background: #FFF5F0; border: 1.5px solid rgba(252,75,12,.25); border-radius: 8px; font-size: 12px; font-weight: 700; color: var(--orange); }
+    .sc-selected-confirm.visible { display: block; }
 
     /* ── HOW IT WORKS ────────────────────────────────────────────── */
     .how-section { background: var(--cream); padding: 72px 0; }
@@ -190,6 +192,22 @@
     .btn-learn { display: inline-block; padding: 15px 36px; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; transition: opacity .2s; }
     .btn-learn:hover { opacity: .88; }
     .learnmore-section .hint { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 10px; }
+
+    /* ── TESTIMONIALS ───────────────────────────────────────────── */
+    .testimonials-section { background: #fff; padding: 72px 0; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 40px; }
+    .testi-card { background: var(--cream); border-radius: 16px; padding: 24px 22px; }
+    .testi-stars { color: var(--orange); font-size: 14px; margin-bottom: 12px; letter-spacing: 1px; }
+    .testi-quote { font-size: 15px; color: var(--dark); line-height: 1.65; font-style: italic; margin-bottom: 16px; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .testi-name { font-size: 13px; font-weight: 700; color: var(--dark); }
+    .testi-detail { font-size: 11px; color: var(--muted); }
+    .testi-stats { display: flex; justify-content: center; gap: 48px; margin-top: 48px; flex-wrap: wrap; }
+    .testi-stat { text-align: center; }
+    .testi-stat-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 800; color: var(--orange); letter-spacing: -1px; line-height: 1; }
+    .testi-stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    @media (max-width: 860px) { .testi-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; } }
 
     /* ── WHAT IS NOVATIO (cream) ─────────────────────────────────── */
     .win-section { background: var(--cream); padding: 72px 0; }
@@ -257,7 +275,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <img src="https://cdn.prod.website-files.com/687c139d7d1362f24d06d2ba/687c2d0dc0455a56ea3aef16_Novatio%20Primary%20Logo%20-%20Dark.svg" alt="Novatio" />
+      <img src="./novatio-logo-dark.svg" alt="Novatio" />
     </a>
     <div class="nav-right">
       <a href="about.html" class="nav-learn">Learn about Novatio →</a>
@@ -275,12 +293,13 @@
 
       <!-- Left copy -->
       <div>
-        <div class="hero-eyebrow">✦ FREE · VIRTUAL · JUNE 2026</div>
+        <div class="hero-eyebrow">✦ Experience virtual school done right</div>
         <h1>Summer Sessions<br>with <span>Novatio School</span></h1>
         <p class="hero-sub">
-          See what Novatio is like before you sign up.
-          <strong>One-hour virtual sessions this June — free, no application, no commitment.</strong>
-          Your child builds an AI storybook, codes a real video game, or meets other virtual students. Just show up.
+          Novatio is a private virtual school for students in grades 4–8. Tuition is fully covered by ESA — <strong>$0 out of pocket for Arizona residents.</strong>
+        </p>
+        <p class="hero-sub" style="margin-top:-10px;">
+          Try it free this June. One-hour virtual sessions — no application, no commitment. Your child builds an AI storybook, codes a real video game, or meets other virtual students.
         </p>
         <div class="hero-tags">
           <span class="htag green">✓ Free to attend</span>
@@ -554,7 +573,7 @@
           and leave with a finished book to share.
         </p>
         <div class="sc-date-picker">
-          <div class="sc-date-label">Pick your week in June:</div>
+          <div class="sc-date-label">Pick a date — this is your one session:</div>
           <div class="sc-pills">
             <button class="sc-pill" data-session="story" data-date="June 2" data-label="Tue, Jun 2 · 3pm MST" onclick="pickDate(this)">Tue, Jun 2</button>
             <button class="sc-pill" data-session="story" data-date="June 9" data-label="Tue, Jun 9 · 3pm MST" onclick="pickDate(this)">Tue, Jun 9</button>
@@ -562,6 +581,7 @@
             <button class="sc-pill" data-session="story" data-date="June 23" data-label="Tue, Jun 23 · 3pm MST" onclick="pickDate(this)">Tue, Jun 23</button>
             <button class="sc-pill" data-session="story" data-date="June 30" data-label="Tue, Jun 30 · 3pm MST" onclick="pickDate(this)">Tue, Jun 30</button>
           </div>
+          <div class="sc-selected-confirm" id="sc-confirm-story"></div>
         </div>
       </div>
 
@@ -577,13 +597,14 @@
           you'll actually want to share.
         </p>
         <div class="sc-date-picker">
-          <div class="sc-date-label">Pick your week in June:</div>
+          <div class="sc-date-label">Pick a date — this is your one session:</div>
           <div class="sc-pills">
             <button class="sc-pill" data-session="game" data-date="June 4" data-label="Thu, Jun 4 · 9am MST" onclick="pickDate(this)">Thu, Jun 4</button>
             <button class="sc-pill" data-session="game" data-date="June 11" data-label="Thu, Jun 11 · 9am MST" onclick="pickDate(this)">Thu, Jun 11</button>
             <button class="sc-pill" data-session="game" data-date="June 18" data-label="Thu, Jun 18 · 9am MST" onclick="pickDate(this)">Thu, Jun 18</button>
             <button class="sc-pill" data-session="game" data-date="June 25" data-label="Thu, Jun 25 · 9am MST" onclick="pickDate(this)">Thu, Jun 25</button>
           </div>
+          <div class="sc-selected-confirm" id="sc-confirm-game"></div>
         </div>
       </div>
 
@@ -599,13 +620,14 @@
           A different theme every week.
         </p>
         <div class="sc-date-picker">
-          <div class="sc-date-label">Pick your week in June:</div>
+          <div class="sc-date-label">Pick a date — this is your one session:</div>
           <div class="sc-pills">
             <button class="sc-pill" data-session="social" data-date="June 3" data-label="Wed, Jun 3 · 12pm MST" onclick="pickDate(this)">Wed, Jun 3</button>
             <button class="sc-pill" data-session="social" data-date="June 10" data-label="Wed, Jun 10 · 12pm MST" onclick="pickDate(this)">Wed, Jun 10</button>
             <button class="sc-pill" data-session="social" data-date="June 17" data-label="Wed, Jun 17 · 12pm MST" onclick="pickDate(this)">Wed, Jun 17</button>
             <button class="sc-pill" data-session="social" data-date="June 24" data-label="Wed, Jun 24 · 12pm MST" onclick="pickDate(this)">Wed, Jun 24</button>
           </div>
+          <div class="sc-selected-confirm" id="sc-confirm-social"></div>
         </div>
       </div>
 
@@ -722,6 +744,65 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════════ -->
+<section class="testimonials-section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">WHAT FAMILIES SAY</div>
+    <h2 class="section-h2" style="max-width:560px;margin:0 auto;">Real kids. Real results.</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"I made my first friend in three years. Everyone here just gets it — it's not weird to be excited about learning."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Marcus T.</div>
+            <div class="testi-detail">Novatio student, Grade 7</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"I was skeptical about virtual school. Now I can't imagine going back. My daughter finishes her work by noon and actually loves learning again."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">D</div>
+          <div>
+            <div class="testi-name">Danielle R.</div>
+            <div class="testi-detail">Parent of a 5th grader</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"The clubs are the best part. I'm doing robotics, coding, and entrepreneurship — stuff I'd never get to do at my old school."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div>
+            <div class="testi-name">Sophie K.</div>
+            <div class="testi-detail">Novatio student, Grade 6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-stats">
+      <div class="testi-stat">
+        <div class="testi-stat-num">4.9/5</div>
+        <div class="testi-stat-label">Average family rating</div>
+      </div>
+      <div class="testi-stat">
+        <div class="testi-stat-num">120+</div>
+        <div class="testi-stat-label">Arizona families enrolled</div>
+      </div>
+      <div class="testi-stat">
+        <div class="testi-stat-num">4.6×</div>
+        <div class="testi-stat-label">Faster learning growth vs. traditional school</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
      WHAT IS NOVATIO
 ════════════════════════════════════════════════ -->
 <section class="win-section">
@@ -792,7 +873,7 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-logo">
-        <img src="https://cdn.prod.website-files.com/687c139d7d1362f24d06d2ba/687c2d0dc0455a56ea3aef16_Novatio%20Primary%20Logo%20-%20Dark.svg" alt="Novatio" />
+        <img src="./novatio-logo-white.svg" alt="Novatio" />
       </div>
       <div class="footer-links">
         <a href="https://novatio.school">novatio.school</a>
@@ -832,6 +913,7 @@ function pickDate(pill) {
   const sess = pill.dataset.session;
   const date = pill.dataset.date;
   const label = pill.dataset.label;
+  const confirmEl = document.getElementById('sc-confirm-' + sess);
 
   // If already selected, deselect
   if (pill.classList.contains('selected')) {
@@ -839,6 +921,7 @@ function pickDate(pill) {
     delete selectedDates[sess];
     document.querySelector('#main-cards [data-session="'+sess+'"]').classList.remove('has-date');
     syncHcRow(sess, null);
+    if (confirmEl) { confirmEl.textContent = ''; confirmEl.classList.remove('visible'); }
     updateSummary();
     return;
   }
@@ -850,6 +933,7 @@ function pickDate(pill) {
   selectedDates[sess] = { date, label };
   document.querySelector('#main-cards [data-session="'+sess+'"]').classList.add('has-date');
   syncHcRow(sess, date);
+  if (confirmEl) { confirmEl.textContent = '✓ You\'re signed up for ' + label; confirmEl.classList.add('visible'); }
   updateSummary();
 }
 
