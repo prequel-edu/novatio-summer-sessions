@@ -278,7 +278,6 @@
       <img src="./novatio-logo-dark.svg" alt="Novatio" />
     </a>
     <div class="nav-right">
-      <a href="about.html" class="nav-learn">Learn about Novatio →</a>
       <button class="btn-nav" onclick="document.getElementById('signup-form').scrollIntoView({behavior:'smooth'})">Reserve Your Spot →</button>
     </div>
   </div>
@@ -753,50 +752,50 @@
     <div class="testi-grid">
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"I made my first friend in three years. Everyone here just gets it — it's not weird to be excited about learning."</p>
+        <p class="testi-quote">"I made my first friend in three years."</p>
         <div class="testi-author">
-          <div class="testi-avatar">M</div>
+          <div class="testi-avatar">✦</div>
           <div>
-            <div class="testi-name">Marcus T.</div>
-            <div class="testi-detail">Novatio student, Grade 7</div>
+            <div class="testi-name">Novatio student</div>
+            <div class="testi-detail">First week at Novatio</div>
           </div>
         </div>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"I was skeptical about virtual school. Now I can't imagine going back. My daughter finishes her work by noon and actually loves learning again."</p>
+        <p class="testi-quote">"We were watching our son fall through the cracks until Novatio. Now he's excited about learning again and feels understood."</p>
         <div class="testi-author">
-          <div class="testi-avatar">D</div>
+          <div class="testi-avatar">✦</div>
           <div>
-            <div class="testi-name">Danielle R.</div>
-            <div class="testi-detail">Parent of a 5th grader</div>
+            <div class="testi-name">Novatio parent</div>
+            <div class="testi-detail">Arizona family</div>
           </div>
         </div>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"The clubs are the best part. I'm doing robotics, coding, and entrepreneurship — stuff I'd never get to do at my old school."</p>
+        <p class="testi-quote">"I really like how I can learn at my own pace, and be able to go ahead of my grade."</p>
         <div class="testi-author">
-          <div class="testi-avatar">S</div>
+          <div class="testi-avatar">✦</div>
           <div>
-            <div class="testi-name">Sophie K.</div>
-            <div class="testi-detail">Novatio student, Grade 6</div>
+            <div class="testi-name">Novatio student</div>
+            <div class="testi-detail">Grades 4–8</div>
           </div>
         </div>
       </div>
     </div>
     <div class="testi-stats">
       <div class="testi-stat">
-        <div class="testi-stat-num">4.9/5</div>
-        <div class="testi-stat-label">Average family rating</div>
-      </div>
-      <div class="testi-stat">
-        <div class="testi-stat-num">120+</div>
-        <div class="testi-stat-label">Arizona families enrolled</div>
-      </div>
-      <div class="testi-stat">
         <div class="testi-stat-num">4.6×</div>
         <div class="testi-stat-label">Faster learning growth vs. traditional school</div>
+      </div>
+      <div class="testi-stat">
+        <div class="testi-stat-num">2 hrs</div>
+        <div class="testi-stat-label">Of academics per day — done by 2pm</div>
+      </div>
+      <div class="testi-stat">
+        <div class="testi-stat-num">$0</div>
+        <div class="testi-stat-label">Out-of-pocket for Arizona ESA families</div>
       </div>
     </div>
   </div>
@@ -1069,8 +1068,9 @@ async function handleHeroSubmit(e) {
   const btn  = form.querySelector('.btn-submit');
   btn.textContent = 'Submitting…'; btn.disabled = true;
   const data = Object.fromEntries(new FormData(form));
+  localStorage.setItem('novatio_confirmed_sessions', JSON.stringify(selectedDates));
   await submitToHubSpot(data);
-  form.closest('.hero-card').innerHTML = successHTML();
+  window.location.href = 'confirmed.html';
 }
 
 async function handleMainSubmit(e) {
@@ -1079,8 +1079,9 @@ async function handleMainSubmit(e) {
   const btn  = form.querySelector('.btn-submit');
   btn.textContent = 'Submitting…'; btn.disabled = true;
   const data = Object.fromEntries(new FormData(form));
+  localStorage.setItem('novatio_confirmed_sessions', JSON.stringify(selectedDates));
   await submitToHubSpot(data);
-  form.innerHTML = successHTML();
+  window.location.href = 'confirmed.html';
 }
 
 // ── UTM capture ────────────────────────────────────────────────

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're In! — Novatio Summer Sessions 2026</title>
+  <meta name="robots" content="noindex" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TPV3VJJK');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN TOKENS ──────────────────────────────────────────── */
+    :root {
+      --dark:    #222625;
+      --orange:  #FC4B0C;
+      --orange2: #FF9437;
+      --cream:   #FFF8F3;
+      --warm:    #FBF6F2;
+      --white:   #FFFFFF;
+      --text:    #222625;
+      --muted:   #6B7280;
+      --border:  #E5E7EB;
+      --yellow:  #FFFFAC;
+      --green:   #166534;
+      --green-bg:#DCFCE7;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1,h2,h3,h4 { font-family: 'Bricolage Grotesque', sans-serif; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+
+    /* ── NAV ─────────────────────────────────────────────────────── */
+    nav { background: var(--dark); padding: 16px 28px; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+    .nav-logo img { height: 22px; width: auto; opacity: .9; }
+    .nav-back { font-size: 13px; color: rgba(255,255,255,.45); font-weight: 500; transition: color .2s; }
+    .nav-back:hover { color: rgba(255,255,255,.8); }
+
+    /* ── CONFIRMED HERO ──────────────────────────────────────────── */
+    .confirmed-hero { background: var(--dark); padding: 56px 0 68px; }
+    .confirmed-hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 56px; align-items: start; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--green-bg); color: var(--green); font-size: 12px; font-weight: 800; padding: 6px 16px; border-radius: 999px; margin-bottom: 20px; }
+    .confirmed-hero h1 { font-size: clamp(32px,3.8vw,52px); font-weight: 800; color: #fff; letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 14px; }
+    .confirmed-hero h1 span { color: var(--yellow); }
+    .confirmed-hero .hero-sub { font-size: 16px; color: rgba(255,255,255,.65); line-height: 1.75; margin-bottom: 28px; max-width: 480px; }
+
+    /* Session list */
+    .session-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .session-item { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 14px 16px; }
+    .session-item .si-icon { font-size: 22px; flex-shrink: 0; }
+    .session-item .si-info { flex: 1; min-width: 0; }
+    .session-item .si-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 700; color: #fff; }
+    .session-item .si-date { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 1px; }
+    .session-item .si-cal { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; }
+    .btn-cal { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 7px; font-size: 11px; font-weight: 700; cursor: pointer; border: none; transition: opacity .2s; white-space: nowrap; }
+    .btn-cal:hover { opacity: .85; }
+    .btn-cal.google { background: #fff; color: #374151; }
+    .btn-cal.apple { background: rgba(255,255,255,.12); color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.15); }
+    .btn-cal svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    .session-empty { background: rgba(255,255,255,.04); border: 1px dashed rgba(255,255,255,.12); border-radius: 12px; padding: 20px; text-align: center; color: rgba(255,255,255,.4); font-size: 14px; }
+
+    /* Contact info */
+    .hero-contact { font-size: 13px; color: rgba(255,255,255,.4); }
+    .hero-contact a { color: var(--orange2); font-weight: 600; }
+    .hero-contact a:hover { text-decoration: underline; }
+
+    /* Right: what to expect card */
+    .expect-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 28px 24px; }
+    .expect-card h3 { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 20px; }
+    .expect-step { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+    .expect-step:last-child { margin-bottom: 0; }
+    .expect-num { width: 32px; height: 32px; border-radius: 50%; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .expect-text-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .expect-text-body { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.55; }
+    .expect-cta { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08); }
+    .btn-karissa { display: block; width: 100%; padding: 12px; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 800; border: none; border-radius: 10px; cursor: pointer; transition: opacity .2s; text-align: center; }
+    .btn-karissa:hover { opacity: .88; }
+    .karissa-note { font-size: 11px; color: rgba(255,255,255,.3); text-align: center; margin-top: 8px; }
+
+    /* ── STATS BAR ───────────────────────────────────────────────── */
+    .stats-bar { background: var(--orange); padding: 20px 0; }
+    .stats-inner { display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat-item { text-align: center; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,.2); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 28px; font-weight: 800; color: var(--yellow); letter-spacing: -1px; line-height: 1; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,.85); margin-top: 2px; }
+
+    /* ── HOW NOVATIO WORKS ───────────────────────────────────────── */
+    .how-section { background: var(--warm); padding: 72px 0; }
+    .section-h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(24px,2.8vw,38px); font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
+    .section-sub { font-size: 15px; color: var(--muted); max-width: 540px; line-height: 1.75; margin-bottom: 32px; }
+    .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .day-block { background: #fff; border-radius: 20px; padding: 28px 24px; border: 1.5px solid var(--border); }
+    .day-block-icon { font-size: 30px; margin-bottom: 12px; }
+    .day-block-time { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
+    .day-block-time.morning { background: #FEF3C7; color: #92400E; }
+    .day-block-time.afternoon { background: #EDE9FE; color: #5B21B6; }
+    .day-block h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+    .day-block p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .day-block ul { list-style: none; padding: 0; margin-top: 12px; }
+    .day-block ul li { font-size: 13px; color: #374151; padding: 4px 0 4px 18px; position: relative; line-height: 1.5; }
+    .day-block ul li::before { content: '✓'; position: absolute; left: 0; color: var(--orange); font-weight: 700; font-size: 11px; top: 6px; }
+    .schedule-strip { background: var(--dark); border-radius: 16px; margin-top: 28px; padding: 18px 24px; display: grid; grid-template-columns: repeat(3,1fr); }
+    .sched-col { text-align: center; padding: 8px 12px; border-right: 1px solid rgba(255,255,255,.1); }
+    .sched-col:last-child { border-right: none; }
+    .sched-lbl { font-size: 10px; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .sched-val { font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 800; color: var(--yellow); }
+    .sched-desc { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 2px; }
+
+    /* ── TESTIMONIALS ────────────────────────────────────────────── */
+    .proof-section { background: var(--orange); padding: 64px 0; }
+    .proof-section .section-label { color: rgba(255,255,255,.65); }
+    .proof-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 32px; }
+    .proof-card { background: rgba(255,255,255,.1); border-radius: 16px; padding: 24px 20px; }
+    .proof-stars { color: var(--yellow); font-size: 14px; margin-bottom: 10px; letter-spacing: 2px; }
+    .proof-quote { font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 700; color: #fff; line-height: 1.45; margin-bottom: 10px; font-style: italic; }
+    .proof-by { font-size: 12px; color: rgba(255,255,255,.6); }
+    .proof-h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(22px,2.6vw,36px); font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 6px; }
+
+    /* ── TUITION ─────────────────────────────────────────────────── */
+    .tuition-section { background: var(--white); padding: 72px 0; }
+    .tuition-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 32px; }
+    .tuition-card { background: var(--warm); border-radius: 16px; padding: 24px; border: 1.5px solid var(--border); }
+    .tuition-card.featured { border-color: var(--orange); }
+    .tuition-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    .tuition-badge.az { background: #FEF3C7; color: #92400E; }
+    .tuition-badge.tx { background: #DCFCE7; color: #166534; }
+    .tuition-badge.oos { background: #F3F4F6; color: #374151; }
+    .tuition-price { font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 800; color: var(--dark); letter-spacing: -1px; margin-bottom: 6px; }
+    .tuition-price.free { color: var(--orange); }
+    .tuition-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── BOOK A CALL ─────────────────────────────────────────────── */
+    .book-section { background: var(--dark); padding: 80px 0; }
+    .book-inner { display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: start; }
+    .book-copy h2 { font-size: clamp(24px,2.8vw,38px); font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 14px; }
+    .book-copy p { font-size: 15px; color: rgba(255,255,255,.7); line-height: 1.75; margin-bottom: 20px; max-width: 440px; }
+    .book-bullets { list-style: none; padding: 0; }
+    .book-bullets li { font-size: 14px; color: rgba(255,255,255,.75); padding: 5px 0 5px 22px; position: relative; line-height: 1.55; }
+    .book-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--orange2); font-weight: 700; }
+    .book-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 32px 28px; }
+    .krow { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .kavatar { width: 52px; height: 52px; border-radius: 50%; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .kinfo-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 800; color: #fff; }
+    .kinfo-title { font-size: 12px; color: rgba(255,255,255,.5); }
+    .kbio { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 24px; }
+    .call-points { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .call-point { display: flex; align-items: flex-start; gap: 10px; }
+    .call-point-icon { width: 28px; height: 28px; border-radius: 8px; background: rgba(252,75,12,.2); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+    .call-point-text { font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.5; padding-top: 4px; }
+    .btn-book-main { display: block; width: 100%; padding: 15px; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; transition: opacity .2s; text-align: center; }
+    .btn-book-main:hover { opacity: .88; }
+    .book-alt { font-size: 12px; color: rgba(255,255,255,.35); text-align: center; margin-top: 10px; }
+    .book-alt a { color: var(--orange2); }
+
+    /* ── FAQ ─────────────────────────────────────────────────────── */
+    .faq-section { background: var(--cream); padding: 72px 0; }
+    .faq-list { max-width: 720px; margin: 32px auto 0; display: flex; flex-direction: column; gap: 6px; }
+    .faq-item { border-radius: 14px; border: 1.5px solid var(--border); background: #fff; overflow: hidden; }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 22px; cursor: pointer; user-select: none; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 700; color: var(--dark); width: 100%; background: none; border: none; text-align: left; }
+    .faq-q:hover { background: var(--warm); }
+    .faq-chevron { font-size: 18px; color: #D1D5DB; transition: transform .25s; flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 22px 18px; font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-q { color: var(--orange); }
+
+    /* ── FOOTER ──────────────────────────────────────────────────── */
+    footer { background: #151A18; color: rgba(255,255,255,.55); padding: 36px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo img { height: 22px; width: auto; opacity: .6; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,.4); transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.7); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .confirmed-hero-inner { grid-template-columns: 1fr; }
+      .book-inner { grid-template-columns: 1fr; }
+      .day-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .proof-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+      .tuition-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+    }
+    @media (max-width: 640px) {
+      .session-item { flex-direction: column; align-items: flex-start; }
+      .si-cal { margin-top: 6px; }
+      .schedule-strip { grid-template-columns: 1fr; }
+      .sched-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); padding: 10px 12px; }
+      .sched-col:last-child { border-bottom: none; }
+    }
+    @media (max-width: 480px) {
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPV3VJJK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="./novatio-logo-white.svg" alt="Novatio" />
+    </a>
+    <a href="index.html" class="nav-back">← Back to Summer Sessions</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     CONFIRMED HERO
+════════════════════════════════════════════════ -->
+<section class="confirmed-hero">
+  <div class="container">
+    <div class="confirmed-hero-inner">
+
+      <!-- Left: confirmation -->
+      <div>
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7L5.5 10.5L12 3.5" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          You're registered
+        </div>
+        <h1>You're <span>in!</span></h1>
+        <p class="hero-sub">
+          Your spot is reserved. Here's what you signed up for — add your sessions to your calendar so you don't forget.
+        </p>
+
+        <div class="session-list" id="session-list">
+          <!-- Populated by JS from localStorage -->
+        </div>
+
+        <p class="hero-contact">
+          Questions? Text us at <a href="tel:520-375-3356">(520) 375-3356</a>
+          or email <a href="mailto:admissions@novatio.school">admissions@novatio.school</a>
+        </p>
+      </div>
+
+      <!-- Right: what to expect -->
+      <div>
+        <div class="expect-card">
+          <h3>What happens next</h3>
+          <div class="expect-step">
+            <div class="expect-num">1</div>
+            <div>
+              <div class="expect-text-title">You'll get a Zoom link</div>
+              <div class="expect-text-body">We'll email you the session link 24–48 hours before each session. Keep an eye on your inbox (and spam, just in case).</div>
+            </div>
+          </div>
+          <div class="expect-step">
+            <div class="expect-num">2</div>
+            <div>
+              <div class="expect-text-title">Just show up</div>
+              <div class="expect-text-body">No prep needed. Your child jumps in and the teacher takes it from there. One hour, fully led by a real Novatio teacher.</div>
+            </div>
+          </div>
+          <div class="expect-step">
+            <div class="expect-num">3</div>
+            <div>
+              <div class="expect-text-title">Try Novatio for real</div>
+              <div class="expect-text-body">This is what a typical Novatio afternoon club looks like. See if it clicks — no pressure to do anything next.</div>
+            </div>
+          </div>
+          <div class="expect-cta">
+            <a href="https://meetings.hubspot.com/karissa-ham" class="btn-karissa" target="_blank" rel="noopener">
+              Curious about enrolling? Talk to Karissa →
+            </a>
+            <p class="karissa-note">Free 30-min call · No commitment</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">4.6×</div>
+        <div class="stat-label">faster learning growth</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2 hrs</div>
+        <div class="stat-label">of academics per day</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">out-of-pocket for AZ + TX</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2pm</div>
+        <div class="stat-label">school done, no homework</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     HOW NOVATIO WORKS
+════════════════════════════════════════════════ -->
+<section class="how-section">
+  <div class="container">
+    <div class="section-label">HOW NOVATIO WORKS</div>
+    <h2 class="section-h2">Two hours of school. A full afternoon of life.</h2>
+    <p class="section-sub">Novatio students master their academics in two focused, AI-personalized hours each morning — then spend their afternoons on real-world skills. Done by 2pm. No homework.</p>
+
+    <div class="day-grid">
+      <div class="day-block">
+        <div class="day-block-icon">🌅</div>
+        <span class="day-block-time morning">8:00 AM – 12:00 PM</span>
+        <h3>Morning Academic Block</h3>
+        <p>AI-driven learning personalized to your child's exact level — not their grade, their actual skill. 25-min work / 5-min break rhythm for deep focus.</p>
+        <ul>
+          <li>30-min Morning Launch with their teacher</li>
+          <li>Personalized work across 5 subjects</li>
+          <li>1:1 academic coach + AI tutor always available</li>
+          <li>80% daily mastery standard — they don't move on until it sticks</li>
+        </ul>
+      </div>
+      <div class="day-block">
+        <div class="day-block-icon">🎨</div>
+        <span class="day-block-time afternoon">12:00 PM – 2:00 PM</span>
+        <h3>Novatio Clubs (Afternoons)</h3>
+        <p>Students choose 4 clubs per session. Each built around a real-world skill — coding, entrepreneurship, public speaking, financial literacy, teamwork, and more.</p>
+        <ul>
+          <li>Project-based — they leave with real work to show</li>
+          <li>Harvard Business School simulation (students outperform MBAs)</li>
+          <li>Friends from across the country who share their interests</li>
+          <li>Yale's Science of Well-Being included for every student</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="schedule-strip">
+      <div class="sched-col">
+        <div class="sched-lbl">Off-screen break</div>
+        <div class="sched-val">11am – 12pm</div>
+        <div class="sched-desc">Lunch + outdoor play</div>
+      </div>
+      <div class="sched-col">
+        <div class="sched-lbl">No homework</div>
+        <div class="sched-val">2:00 PM</div>
+        <div class="sched-desc">School is done for the day</div>
+      </div>
+      <div class="sched-col">
+        <div class="sched-lbl">Total screen time</div>
+        <div class="sched-val">~4.5 hrs</div>
+        <div class="sched-desc">vs. 6–7 hours traditional school</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════════ -->
+<section class="proof-section">
+  <div class="container">
+    <div class="section-label">WHAT FAMILIES SAY</div>
+    <h2 class="proof-h2">They weren't expecting this.</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-quote">"I made my first friend in three years."</p>
+        <div class="proof-by">Virtual student, first week at Novatio</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-quote">"We were watching our son fall through the cracks until Novatio. Now he's excited about learning again and feels understood."</p>
+        <div class="proof-by">Novatio parent</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-quote">"I really like how I can learn at my own pace, and be able to go ahead of my grade."</p>
+        <div class="proof-by">Novatio student</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     TUITION
+════════════════════════════════════════════════ -->
+<section class="tuition-section">
+  <div class="container">
+    <div class="section-label">TUITION</div>
+    <h2 class="section-h2">Most families pay nothing.</h2>
+    <p class="section-sub">Arizona and Texas have education savings account programs that cover Novatio in full. If you're outside those states, financial aid is available.</p>
+    <div class="tuition-grid">
+      <div class="tuition-card featured">
+        <span class="tuition-badge az">Arizona — ESA</span>
+        <div class="tuition-price free">$0</div>
+        <p class="tuition-desc">The Arizona Empowerment Scholarship Account covers $7,000/year — enough to fully fund Novatio. Every AZ K–12 student qualifies. No income limit.</p>
+      </div>
+      <div class="tuition-card featured">
+        <span class="tuition-badge tx">Texas — TEFA</span>
+        <div class="tuition-price free">$0</div>
+        <p class="tuition-desc">Texas Education Freedom Accounts cover Novatio for eligible TX families. Karissa will walk you through eligibility on your call.</p>
+      </div>
+      <div class="tuition-card">
+        <span class="tuition-badge oos">All Other States</span>
+        <div class="tuition-price">$10K</div>
+        <p class="tuition-desc">$10,000/year for families outside AZ and TX. Financial aid is available — book a call with Karissa to discuss your options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     BOOK A CALL
+════════════════════════════════════════════════ -->
+<section class="book-section">
+  <div class="container">
+    <div class="book-inner">
+
+      <div class="book-copy">
+        <div class="section-label" style="color:rgba(255,255,255,.55)">READY TO LEARN MORE?</div>
+        <h2>Talk to Karissa.</h2>
+        <p>Karissa Ham is Novatio's Head of School. Not a salesperson. A real conversation about whether Novatio is the right fit for your family — and she'll tell you honestly if it's not.</p>
+        <ul class="book-bullets">
+          <li>Walk you through a typical school day</li>
+          <li>Answer questions about your child's specific learning profile</li>
+          <li>Explain exactly how ESA or TEFA works for your situation</li>
+          <li>Walk you through next steps if you want to move forward</li>
+        </ul>
+        <p style="margin-top:24px;font-size:13px;color:rgba(255,255,255,.5);">
+          Prefer to reach us first? Text <a href="tel:520-375-3356" style="color:var(--orange2);font-weight:600;">(520) 375-3356</a>
+          or email <a href="mailto:admissions@novatio.school" style="color:var(--orange2);font-weight:600;">admissions@novatio.school</a>
+        </p>
+      </div>
+
+      <div>
+        <div class="book-card">
+          <div class="krow">
+            <div class="kavatar">K</div>
+            <div>
+              <div class="kinfo-name">Karissa Ham</div>
+              <div class="kinfo-title">Head of School, Novatio</div>
+            </div>
+          </div>
+          <p class="kbio">Karissa has worked with hundreds of families — kids who were falling behind, kids who were bored, kids who just didn't fit in traditional school. She'll answer every question you have.</p>
+          <div class="call-points">
+            <div class="call-point">
+              <div class="call-point-icon">⏱</div>
+              <div class="call-point-text">30 minutes · Free · No commitment required</div>
+            </div>
+            <div class="call-point">
+              <div class="call-point-icon">📅</div>
+              <div class="call-point-text">Pick a time that works — evenings and weekends available</div>
+            </div>
+            <div class="call-point">
+              <div class="call-point-icon">🤝</div>
+              <div class="call-point-text">Real conversation — not a pitch deck</div>
+            </div>
+          </div>
+          <a href="https://meetings.hubspot.com/karissa-ham" class="btn-book-main" target="_blank" rel="noopener">
+            Schedule a free call with Karissa →
+          </a>
+          <p class="book-alt">Or text us at <a href="tel:520-375-3356">(520) 375-3356</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">COMMON QUESTIONS</div>
+    <h2 class="section-h2">Answers before you ask.</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is Novatio a real, accredited school?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Yes. Novatio is Cognia certified — the same accreditation body used by tens of thousands of schools worldwide. Students receive official transcripts. Credits transfer. For Arizona and Texas families, it's also approved under the ESA and TEFA programs respectively.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What does a typical day look like?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Students log in anytime during the 8–10am window. 30-min Morning Launch with their teacher, then 2 hours of personalized academic work. Lunch and outside time from 11am–noon. Novatio Clubs from 12–2pm. Done by 2pm. No homework.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if my child has an IEP, ADHD, or other learning differences?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Novatio is a strong fit for neurodiverse learners. The AI-driven system adapts to each student's individual pace and profile. Text-to-speech accommodations are built in. Karissa can walk you through how it works for your child specifically.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Will my child make friends? Will they be lonely?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">This comes up on almost every enrollment call. Novatio students form genuine friendships — they spend afternoons together in clubs, working on shared projects, competing in team challenges. Afternoon clubs are designed specifically to build connection, not just skills.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How does the ESA work in Arizona?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">The Arizona Empowerment Scholarship Account (ESA) gives eligible K–12 families $7,000/year to use toward approved programs — including Novatio. Every Arizona student qualifies regardless of income. Karissa walks every AZ family through the application process on the enrollment call.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          When can my child start?
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Enrollment is open for the 2025–26 school year (now) and the 2026–27 school year. Spots are limited. If you're considering Novatio for fall, it's worth booking a call with Karissa soon — the ESA application process takes a few weeks to process.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="./novatio-logo-white.svg" alt="Novatio" />
+      </div>
+      <div class="footer-links">
+        <a href="https://novatio.school">novatio.school</a>
+        <a href="https://novatio.school/privacy-policy">Privacy Policy</a>
+        <a href="mailto:admissions@novatio.school">admissions@novatio.school</a>
+        <a href="tel:520-375-3356">(520) 375-3356</a>
+      </div>
+      <div class="footer-copy">© 2026 The Novatio School. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════ -->
+<script>
+
+// ── Session metadata ───────────────────────────────────────────
+const SESSION_META = {
+  story: {
+    icon: '📖',
+    title: 'Create Your Own Story',
+    time: '3:00 PM MST',
+    calTitle: 'Novatio Summer Session: Create Your Own Story',
+    calDesc: 'Free virtual session with Novatio School. Zoom link will be emailed before the session.\\nQuestions? admissions@novatio.school or (520) 375-3356',
+    times: {
+      'June 2':  { start: '20260602T220000Z', end: '20260602T230000Z' },
+      'June 9':  { start: '20260609T220000Z', end: '20260609T230000Z' },
+      'June 16': { start: '20260616T220000Z', end: '20260616T230000Z' },
+      'June 23': { start: '20260623T220000Z', end: '20260623T230000Z' },
+      'June 30': { start: '20260630T220000Z', end: '20260630T230000Z' },
+    }
+  },
+  game: {
+    icon: '🎮',
+    title: 'Build Your Own Video Game',
+    time: '9:00 AM MST',
+    calTitle: 'Novatio Summer Session: Build Your Own Video Game',
+    calDesc: 'Free virtual session with Novatio School. Zoom link will be emailed before the session.\\nQuestions? admissions@novatio.school or (520) 375-3356',
+    times: {
+      'June 4':  { start: '20260604T160000Z', end: '20260604T170000Z' },
+      'June 11': { start: '20260611T160000Z', end: '20260611T170000Z' },
+      'June 18': { start: '20260618T160000Z', end: '20260618T170000Z' },
+      'June 25': { start: '20260625T160000Z', end: '20260625T170000Z' },
+    }
+  },
+  social: {
+    icon: '🤝',
+    title: 'Meet Other Virtual Schoolers',
+    time: '12:00 PM MST',
+    calTitle: 'Novatio Summer Session: Meet Other Virtual Schoolers',
+    calDesc: 'Free virtual session with Novatio School. Zoom link will be emailed before the session.\\nQuestions? admissions@novatio.school or (520) 375-3356',
+    times: {
+      'June 3':  { start: '20260603T190000Z', end: '20260603T200000Z' },
+      'June 10': { start: '20260610T190000Z', end: '20260610T200000Z' },
+      'June 17': { start: '20260617T190000Z', end: '20260617T200000Z' },
+      'June 24': { start: '20260624T190000Z', end: '20260624T200000Z' },
+    }
+  }
+};
+
+// ── Calendar link builders ────────────────────────────────────
+function googleCalLink(meta, date) {
+  const t = meta.times[date];
+  if (!t) return null;
+  const params = new URLSearchParams({
+    action:   'TEMPLATE',
+    text:     meta.calTitle,
+    dates:    t.start + '/' + t.end,
+    details:  meta.calDesc.replace(/\\n/g, '\n'),
+    location: 'Online — Zoom link will be emailed before the session',
+  });
+  return 'https://www.google.com/calendar/render?' + params.toString();
+}
+
+function makeIcsBlob(meta, date) {
+  const t = meta.times[date];
+  if (!t) return null;
+  const uid = t.start + '-novatio@novatio.school';
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Novatio School//Summer Sessions 2026//EN',
+    'BEGIN:VEVENT',
+    'UID:' + uid,
+    'DTSTART:' + t.start,
+    'DTEND:' + t.end,
+    'SUMMARY:' + meta.calTitle,
+    'DESCRIPTION:' + meta.calDesc,
+    'LOCATION:Online — Zoom link will be emailed before the session',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+  return 'data:text/calendar;charset=utf8,' + encodeURIComponent(ics);
+}
+
+// ── Render session list ───────────────────────────────────────
+function renderSessions() {
+  const container = document.getElementById('session-list');
+  let stored = {};
+  try { stored = JSON.parse(localStorage.getItem('novatio_confirmed_sessions') || '{}'); } catch(e) {}
+
+  const keys = Object.keys(stored);
+  if (keys.length === 0) {
+    container.innerHTML = '<div class="session-empty">Your registered sessions will appear here after sign-up.</div>';
+    return;
+  }
+
+  container.innerHTML = keys.map(sess => {
+    const meta = SESSION_META[sess];
+    if (!meta) return '';
+    const entry = stored[sess];
+    const date  = entry.date;   // e.g. "June 2"
+    const label = entry.label;  // e.g. "Tue, Jun 2 · 3pm MST"
+
+    const gcLink  = googleCalLink(meta, date);
+    const icsHref = makeIcsBlob(meta, date);
+
+    return `
+      <div class="session-item">
+        <span class="si-icon">${meta.icon}</span>
+        <div class="si-info">
+          <div class="si-title">${meta.title}</div>
+          <div class="si-date">${label}</div>
+        </div>
+        <div class="si-cal">
+          ${gcLink ? `<a href="${gcLink}" target="_blank" rel="noopener" class="btn-cal google">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google Cal
+          </a>` : ''}
+          ${icsHref ? `<a href="${icsHref}" download="novatio-session.ics" class="btn-cal apple">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+            Apple / Outlook
+          </a>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ── FAQ accordion ─────────────────────────────────────────────
+function toggleFaq(btn) {
+  btn.closest('.faq-item').classList.toggle('open');
+}
+
+// ── Init ──────────────────────────────────────────────────────
+renderSessions();
+
+</script>
+
+</body>
+</html>
