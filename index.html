@@ -191,6 +191,24 @@
     .btn-learn:hover { opacity: .88; }
     .learnmore-section .hint { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 10px; }
 
+    /* ── WHAT IS NOVATIO (cream) ─────────────────────────────────── */
+    .win-section { background: var(--cream); padding: 72px 0; }
+    .win-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 32px; }
+    .win-h2 { font-size: clamp(22px,2.6vw,34px); font-weight: 800; letter-spacing: -1px; color: var(--dark); margin-bottom: 16px; line-height: 1.2; }
+    .win-body { font-size: 15px; color: var(--muted); line-height: 1.78; }
+    .win-tuition { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .win-tuition-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--dark); }
+    .win-tuition-badge { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+    .win-tuition-badge.az { background: #DCFCE7; color: #166534; }
+    .win-tuition-badge.tx { background: #DBEAFE; color: #1E40AF; }
+    .win-tuition-badge.oos { background: #F3F4F6; color: #374151; }
+    .win-features { display: flex; flex-direction: column; gap: 20px; }
+    .win-feature { display: flex; align-items: flex-start; gap: 16px; }
+    .win-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .win-feature-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 3px; }
+    .win-feature-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 960px) { .win-inner { grid-template-columns: 1fr; gap: 36px; } }
+
     /* ── FOOTER ──────────────────────────────────────────────────── */
     footer { background: #151A18; color: rgba(255,255,255,.55); padding: 36px 0; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
@@ -258,12 +276,11 @@
       <!-- Left copy -->
       <div>
         <div class="hero-eyebrow">✦ FREE · VIRTUAL · JUNE 2026</div>
-        <h1>Build something real.<br><span>Try Novatio this June — free.</span></h1>
+        <h1>Summer Sessions<br>with <span>Novatio School</span></h1>
         <p class="hero-sub">
-          Your child writes a 10-page AI storybook, codes a real video game,
-          or meets other virtual students — all in one-hour sessions this June.
-          <strong>See what Novatio is actually like before you decide anything.</strong>
-          No application. No commitment. Just show up.
+          See what Novatio is like before you sign up.
+          <strong>One-hour virtual sessions this June — free, no application, no commitment.</strong>
+          Your child builds an AI storybook, codes a real video game, or meets other virtual students. Just show up.
         </p>
         <div class="hero-tags">
           <span class="htag green">✓ Free to attend</span>
@@ -360,8 +377,12 @@
 
           <form onsubmit="handleHeroSubmit(event)">
             <div class="frow">
-              <div class="fg"><label>First name</label><input type="text" name="first_name" required placeholder="Sarah" /></div>
-              <div class="fg"><label>Last name</label><input type="text" name="last_name" required placeholder="Johnson" /></div>
+              <div class="fg"><label>Your first name</label><input type="text" name="first_name" required placeholder="Sarah" /></div>
+              <div class="fg"><label>Your last name</label><input type="text" name="last_name" required placeholder="Johnson" /></div>
+            </div>
+            <div class="frow">
+              <div class="fg"><label>Child's first name</label><input type="text" name="child_firstname" required placeholder="Alex" /></div>
+              <div class="fg"><label>Child's last name</label><input type="text" name="child_lastname" required placeholder="Johnson" /></div>
             </div>
             <div class="fg"><label>Email</label><input type="email" name="email" required placeholder="parent@email.com" /></div>
             <div class="fg"><label>Phone</label><input type="tel" name="phone" required placeholder="(555) 000-0000" /></div>
@@ -383,7 +404,55 @@
                   <option value="">Select…</option>
                   <option value="AZ">Arizona</option>
                   <option value="TX">Texas</option>
-                  <option value="other">Other state</option>
+                  <option disabled>──────────</option>
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
                 </select>
               </div>
             </div>
@@ -433,59 +502,28 @@
 </div>
 
 <!-- ════════════════════════════════════════════════
-     WHAT IS NOVATIO
+     HOW IT WORKS
 ════════════════════════════════════════════════ -->
-<section class="novatio-strip">
-  <div class="container">
-    <div class="novatio-strip-inner">
-
-      <div>
-        <h2>School done by noon.<br><span>Afternoons for real life.</span></h2>
-        <p>
-          Novatio is a private, virtual, AI-driven school for grades 4–8.
-          Students master their academics in just two focused hours each morning,
-          then spend their afternoons on the things that actually shape who they become —
-          coding, entrepreneurship, financial literacy, public speaking, and more.
-        </p>
-        <p style="margin-top:14px;">
-          Students grow <strong style="color:var(--orange2)">4.6× faster</strong> than in traditional school.
-          Tuition is fully covered for AZ families (ESA) and TX families (TEFA).
-          School's done by 2pm. No homework.
-        </p>
-        <p style="margin-top:14px;">
-          <a href="about.html">Learn more about Novatio →</a>
-        </p>
+<section class="how-section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">HOW IT WORKS</div>
+    <h2 class="section-h2">Three steps.</h2>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Pick a session and a date</h4>
+        <p>Choose one or all three sessions. Click a date to claim your spot in that week of June.</p>
       </div>
-
-      <div>
-        <div class="stats-row">
-          <div class="stat-card">
-            <div class="stat-num">2hrs</div>
-            <div class="stat-label">of focused academics per day</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">4.6×</div>
-            <div class="stat-label">faster learning growth</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">$0</div>
-            <div class="stat-label">out-of-pocket for AZ + TX families</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">8</div>
-            <div class="stat-label">afternoon clubs to choose from</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">2pm</div>
-            <div class="stat-label">school's out. no homework.</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">4–8</div>
-            <div class="stat-label">grades, all learner types</div>
-          </div>
-        </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Sign up — takes 60 seconds</h4>
+        <p>Just your name, email, and your child's grade. No application. No commitment. No cost.</p>
       </div>
-
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Show up and try it</h4>
+        <p>You'll get a Zoom link before your session. Your child tries Novatio — for real.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -524,10 +562,6 @@
             <button class="sc-pill" data-session="story" data-date="June 23" data-label="Tue, Jun 23 · 3pm MST" onclick="pickDate(this)">Tue, Jun 23</button>
             <button class="sc-pill" data-session="story" data-date="June 30" data-label="Tue, Jun 30 · 3pm MST" onclick="pickDate(this)">Tue, Jun 30</button>
           </div>
-          <a class="sc-cal" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Novatio+Summer+Sessions%3A+Create+Your+Own+Story&dates=20260602T220000Z%2F20260602T230000Z&recur=RRULE%3AFREQ%3DWEEKLY%3BCOUNT%3D5&details=Use+AI+to+write+and+illustrate+your+own+10-page+storybook.+Hosted+by+Novatio+School.&location=Virtual+%28Zoom+link+sent+before+session%29" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="12" height="11" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
-            Add all 5 dates to Google Calendar
-          </a>
         </div>
       </div>
 
@@ -550,10 +584,6 @@
             <button class="sc-pill" data-session="game" data-date="June 18" data-label="Thu, Jun 18 · 9am MST" onclick="pickDate(this)">Thu, Jun 18</button>
             <button class="sc-pill" data-session="game" data-date="June 25" data-label="Thu, Jun 25 · 9am MST" onclick="pickDate(this)">Thu, Jun 25</button>
           </div>
-          <a class="sc-cal" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Novatio+Summer+Sessions%3A+Build+Your+Own+Video+Game&dates=20260604T160000Z%2F20260604T170000Z&recur=RRULE%3AFREQ%3DWEEKLY%3BCOUNT%3D4&details=Learn+Scratch+and+build+a+real+video+game.+Hosted+by+Novatio+School.&location=Virtual+%28Zoom+link+sent+before+session%29" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="12" height="11" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
-            Add all 4 dates to Google Calendar
-          </a>
         </div>
       </div>
 
@@ -576,40 +606,9 @@
             <button class="sc-pill" data-session="social" data-date="June 17" data-label="Wed, Jun 17 · 12pm MST" onclick="pickDate(this)">Wed, Jun 17</button>
             <button class="sc-pill" data-session="social" data-date="June 24" data-label="Wed, Jun 24 · 12pm MST" onclick="pickDate(this)">Wed, Jun 24</button>
           </div>
-          <a class="sc-cal" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Novatio+Summer+Sessions%3A+Meet+Other+Virtual+Schoolers&dates=20260603T190000Z%2F20260603T200000Z&recur=RRULE%3AFREQ%3DWEEKLY%3BCOUNT%3D4&details=Games%2C+team+challenges%2C+and+get-to-know-you+activities+with+other+virtual+students.+Hosted+by+Novatio+School.&location=Virtual+%28Zoom+link+sent+before+session%29" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="12" height="11" rx="1"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
-            Add all 4 dates to Google Calendar
-          </a>
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════
-     HOW IT WORKS
-════════════════════════════════════════════════ -->
-<section class="how-section">
-  <div class="container" style="text-align:center;">
-    <div class="section-label">HOW IT WORKS</div>
-    <h2 class="section-h2">Three steps.</h2>
-    <div class="steps-row">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h4>Pick a session and a date</h4>
-        <p>Choose one or all three sessions. Click a date to claim your spot in that week of June.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h4>Sign up — takes 60 seconds</h4>
-        <p>Just your name, email, and your child's grade. No application. No commitment. No cost.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h4>Show up and try it</h4>
-        <p>You'll get a Zoom link before your session. Your child tries Novatio — for real.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -635,8 +634,12 @@
 
       <form onsubmit="handleMainSubmit(event)">
         <div class="frow">
-          <div class="fg"><label>First name *</label><input type="text" name="first_name" required placeholder="Sarah" /></div>
-          <div class="fg"><label>Last name *</label><input type="text" name="last_name" required placeholder="Johnson" /></div>
+          <div class="fg"><label>Your first name *</label><input type="text" name="first_name" required placeholder="Sarah" /></div>
+          <div class="fg"><label>Your last name *</label><input type="text" name="last_name" required placeholder="Johnson" /></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Child's first name *</label><input type="text" name="child_firstname" required placeholder="Alex" /></div>
+          <div class="fg"><label>Child's last name *</label><input type="text" name="child_lastname" required placeholder="Johnson" /></div>
         </div>
         <div class="fg"><label>Email address *</label><input type="email" name="email" required placeholder="parent@email.com" /></div>
         <div class="fg"><label>Phone *</label><input type="tel" name="phone" required placeholder="(555) 000-0000" /></div>
@@ -658,7 +661,55 @@
               <option value="">Select state…</option>
               <option value="AZ">Arizona</option>
               <option value="TX">Texas</option>
-              <option value="other">Other state</option>
+              <option disabled>──────────</option>
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
             </select>
           </div>
         </div>
@@ -671,14 +722,66 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     LEARN MORE CTA
+     WHAT IS NOVATIO
 ════════════════════════════════════════════════ -->
-<section class="learnmore-section">
+<section class="win-section">
   <div class="container">
-    <h2>Curious about Novatio as a full-time school?</h2>
-    <p>2-hour academics. AI-driven personalization. Afternoon clubs. Tuition fully covered by ESA or TEFA. Learn what makes Novatio different — or book a call with Karissa, our Head of School.</p>
-    <a href="about.html" class="btn-learn">Learn about Novatio →</a>
-    <p class="hint">Takes 5 minutes to read · No application required to attend sessions</p>
+    <div class="section-label">WHAT IS NOVATIO</div>
+    <div class="win-inner">
+
+      <div class="win-left">
+        <h2 class="win-h2">A school built around your child,<br>not the other way around.</h2>
+        <p class="win-body">Novatio is a private, virtual, AI-driven school for grades 4–8. Students master their academics in just two focused hours each morning, then spend their afternoons on real-world skills — coding, entrepreneurship, financial literacy, public speaking, and more.</p>
+        <p class="win-body" style="margin-top:14px;">Students grow <strong>4.6× faster</strong> than in traditional school. School's done by 2pm. No homework.</p>
+        <div class="win-tuition">
+          <div class="win-tuition-item"><span class="win-tuition-badge az">AZ</span> <strong>$0 out-of-pocket</strong> — ESA covers full tuition</div>
+          <div class="win-tuition-item"><span class="win-tuition-badge tx">TX</span> <strong>$0 out-of-pocket</strong> — TEFA covers full tuition</div>
+          <div class="win-tuition-item"><span class="win-tuition-badge oos">All states</span> <strong>$10,000/yr</strong> — financial aid available</div>
+        </div>
+      </div>
+
+      <div class="win-right">
+        <div class="win-features">
+          <div class="win-feature">
+            <div class="win-icon" style="background:#EFF6FF;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div>
+              <div class="win-feature-title">2-Hour Academic Block</div>
+              <div class="win-feature-body">AI personalizes every lesson to your child's exact level. Two focused hours — then they're done.</div>
+            </div>
+          </div>
+          <div class="win-feature">
+            <div class="win-icon" style="background:#F5F3FF;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <div class="win-feature-title">Afternoon Clubs</div>
+              <div class="win-feature-body">Coding, entrepreneurship, financial literacy, public speaking, robotics, and more — every afternoon.</div>
+            </div>
+          </div>
+          <div class="win-feature">
+            <div class="win-icon" style="background:#FFF7ED;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <div class="win-feature-title">Dedicated Teacher</div>
+              <div class="win-feature-body">A real teacher who knows your child. Small groups, 1:1 coaching, always available.</div>
+            </div>
+          </div>
+          <div class="win-feature">
+            <div class="win-icon" style="background:#ECFDF5;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="win-feature-title">Real Friends</div>
+              <div class="win-feature-body">Other virtual students who get it. Clubs, team challenges, and a community that actually sticks.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -840,13 +943,15 @@ function getSessionsValue() {
 // ── HubSpot submit ─────────────────────────────────────────────
 async function submitToHubSpot(formData) {
   const fields = [
-    { name: 'firstname',                     value: formData.first_name },
-    { name: 'lastname',                      value: formData.last_name  },
-    { name: 'email',                         value: formData.email      },
-    { name: 'phone',                         value: formData.phone      },
-    { name: 'grade_eligibility',             value: formData.grade      },
-    { name: 'hs_state_code',                 value: formData.state      },
-    { name: 'summer_sessions_interested_in', value: getSessionsValue()  },
+    { name: 'firstname',                     value: formData.first_name     },
+    { name: 'lastname',                      value: formData.last_name      },
+    { name: 'child_firstname',               value: formData.child_firstname },
+    { name: 'child_lastname',                value: formData.child_lastname  },
+    { name: 'email',                         value: formData.email          },
+    { name: 'phone',                         value: formData.phone          },
+    { name: 'grade_eligibility',             value: formData.grade          },
+    { name: 'hs_state_code',                 value: formData.state          },
+    { name: 'summer_sessions_interested_in', value: getSessionsValue()      },
     { name: 'lead_source_detail',            value: 'summer-sessions-novatio-2026' },
   ];
   ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k => {
