@@ -811,6 +811,23 @@
 const HS_PORTAL = '49158869';
 const HS_FORM   = 'f7ea2971-f722-4be1-92a3-541c18c60298';
 
+// ── Session date lookup tables ─────────────────────────────────
+// ISO dates for HubSpot date property (submitted as ms since epoch)
+const SESSION_DATE_ISO = {
+  story:  { 'June 2':'2026-06-02','June 9':'2026-06-09','June 16':'2026-06-16','June 23':'2026-06-23','June 30':'2026-06-30' },
+  game:   { 'June 4':'2026-06-04','June 11':'2026-06-11','June 18':'2026-06-18','June 25':'2026-06-25' },
+  social: { 'June 3':'2026-06-03','June 10':'2026-06-10','June 17':'2026-06-17','June 24':'2026-06-24' },
+};
+// Human-readable display strings for SMS copy
+const SESSION_DATE_DISPLAY = {
+  story:  { 'June 2':'Tuesday, June 2 at 3pm MST','June 9':'Tuesday, June 9 at 3pm MST','June 16':'Tuesday, June 16 at 3pm MST','June 23':'Tuesday, June 23 at 3pm MST','June 30':'Tuesday, June 30 at 3pm MST' },
+  game:   { 'June 4':'Thursday, June 4 at 9am MST','June 11':'Thursday, June 11 at 9am MST','June 18':'Thursday, June 18 at 9am MST','June 25':'Thursday, June 25 at 9am MST' },
+  social: { 'June 3':'Wednesday, June 3 at 12pm MST','June 10':'Wednesday, June 10 at 12pm MST','June 17':'Wednesday, June 17 at 12pm MST','June 24':'Wednesday, June 24 at 12pm MST' },
+};
+function isoToHubSpotMs(iso) {
+  return new Date(iso + 'T00:00:00Z').getTime();
+}
+
 // ── State: session → { date, label } ──────────────────────────
 // e.g. { story: { date: 'June 2', label: 'Tue, Jun 2 · 3pm MST' } }
 const selectedDates = {};
@@ -951,6 +968,14 @@ async function submitToHubSpot(formData) {
     { name: 'summer_sessions_interested_in', value: getSessionsValue()      },
     { name: 'lead_source_detail',            value: 'summer-sessions-novatio-2026' },
   ];
+  // Add session-specific date properties for workflow timing + SMS copy
+  Object.keys(selectedDates).forEach(sess => {
+    const date = selectedDates[sess].date;
+    const iso  = SESSION_DATE_ISO[sess]?.[date];
+    const disp = SESSION_DATE_DISPLAY[sess]?.[date];
+    if (iso)  fields.push({ name: sess + '_session_date',         value: String(isoToHubSpotMs(iso)) });
+    if (disp) fields.push({ name: sess + '_session_date_display', value: disp });
+  });
   ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k => {
     const v = localStorage.getItem('wf_' + k);
     if (v) fields.push({ name: k, value: v });
