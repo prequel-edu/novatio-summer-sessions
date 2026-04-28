@@ -280,9 +280,9 @@
     @media (max-width: 860px) { .about-inner { grid-template-columns: 1fr; gap: 40px; } }
 
     /* ── FAQ ─────────────────────────────────────────────────────── */
-    .faq-section { background: var(--warm); padding: 72px 0; }
+    .faq-section { background: var(--warm); padding: 72px 0; text-align: center; }
     .faq-section h2 { margin-bottom: 32px; }
-    .faq-list { max-width: 700px; display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden; background: #fff; }
+    .faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden; background: #fff; text-align: left; }
     .faq-list details { border-bottom: 1px solid var(--border); }
     .faq-list details:last-child { border-bottom: none; }
     .faq-list summary { padding: 18px 22px; font-size: 15px; font-weight: 700; color: var(--dark); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none; }
@@ -495,7 +495,7 @@
 <div class="photo-strip">
   <div class="photo-grid">
     <div class="photo-grid-item">
-      <img src="./photos/girl-waving-screen.jpg" alt="Student in virtual class" loading="lazy" />
+      <img src="./photos/girl-waving-screen.jpg" alt="Student in virtual class" loading="lazy" onerror="this.closest('.photo-strip').style.display='none'" />
     </div>
     <div class="photo-grid-item">
       <img src="./photos/mom-daughter-laptop.jpg" alt="Parent and child learning together" loading="lazy" />
