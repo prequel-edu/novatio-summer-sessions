@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Novatio Summer Sessions — Try a Free Class This June | Grades 4–8</title>
-  <meta name="description" content="Try Novatio free this June. Build an AI storybook, code a real video game, or meet other virtual students. One hour. Pick your date. No application, no commitment." />
+  <title>Novatio Summer Sessions — Free Live Classes This June | Grades 2–8</title>
+  <meta name="description" content="Try Novatio free this June. Live, interactive sessions on Zoom — build an AI storybook, code a real video game, or meet other virtual schoolers. One hour. No application, no commitment." />
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TPV3VJJK');</script>
@@ -244,6 +244,54 @@
     .footer-links a:hover { color: rgba(255,255,255,.7); }
     .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
 
+    /* ── PHOTO STRIP ─────────────────────────────────────────────── */
+    .photo-strip { background: var(--dark); padding: 0; overflow: hidden; }
+    .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); height: 220px; }
+    .photo-grid-item { overflow: hidden; }
+    .photo-grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-placeholder { width: 100%; height: 100%; background: rgba(255,255,255,.05); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.15); font-size: 11px; font-weight: 600; }
+    @media (max-width: 640px) { .photo-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* ── OUTCOMES ────────────────────────────────────────────────── */
+    .outcomes-section { background: var(--cream); padding: 72px 0; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
+    .outcome-card { background: #fff; border-radius: 20px; padding: 32px 28px; border: 1.5px solid var(--border); }
+    .outcome-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+    .outcome-card h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+    .outcome-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 860px) { .outcomes-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; } }
+
+    /* ── ABOUT NOVATIO ───────────────────────────────────────────── */
+    .about-section { background: var(--dark); color: #fff; padding: 72px 0; }
+    .about-section .section-label { color: var(--orange2); }
+    .about-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 72px; align-items: start; }
+    .about-section h2 { font-size: clamp(26px,3vw,40px); font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; color: #fff; line-height: 1.1; }
+    .about-section h2 span { color: var(--yellow); }
+    .about-section .about-body { font-size: 15px; line-height: 1.78; color: rgba(255,255,255,.72); margin-bottom: 28px; }
+    .btn-about { display: inline-block; padding: 14px 30px; background: var(--orange); color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 800; border-radius: 12px; transition: opacity .2s; }
+    .btn-about:hover { opacity: .88; }
+    .about-tuition { display: flex; flex-direction: column; gap: 12px; }
+    .tuition-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: 18px 20px; }
+    .tuition-badge { font-size: 10px; font-weight: 800; padding: 2px 9px; border-radius: 999px; letter-spacing: .5px; margin-bottom: 8px; display: inline-block; }
+    .tuition-badge.az { background: #DCFCE7; color: #166534; }
+    .tuition-badge.tx { background: #DBEAFE; color: #1E40AF; }
+    .tuition-badge.oos { background: rgba(255,255,255,.12); color: rgba(255,255,255,.6); }
+    .tuition-card p { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.6; }
+    @media (max-width: 860px) { .about-inner { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ── FAQ ─────────────────────────────────────────────────────── */
+    .faq-section { background: var(--warm); padding: 72px 0; }
+    .faq-section h2 { margin-bottom: 32px; }
+    .faq-list { max-width: 700px; display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden; background: #fff; }
+    .faq-list details { border-bottom: 1px solid var(--border); }
+    .faq-list details:last-child { border-bottom: none; }
+    .faq-list summary { padding: 18px 22px; font-size: 15px; font-weight: 700; color: var(--dark); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+    .faq-list details[open] summary::after { content: '×'; }
+    .faq-list details[open] summary { color: var(--orange); }
+    .faq-list .faq-body { padding: 0 22px 18px; font-size: 14px; color: var(--muted); line-height: 1.75; }
+
     /* ── MOBILE STICKY ────────────────────────────────────────────── */
     .sticky-cta { display: none; }
 
@@ -284,7 +332,7 @@
       <img src="./novatio-logo-dark.svg" alt="Novatio" />
     </a>
     <div class="nav-right">
-      <button class="btn-nav" onclick="document.getElementById('signup-form').scrollIntoView({behavior:'smooth'})">Reserve Your Spot →</button>
+      <button class="btn-nav" onclick="document.getElementById('sessions').scrollIntoView({behavior:'smooth'})">Reserve Your Spot →</button>
     </div>
   </div>
 </nav>
@@ -301,13 +349,15 @@
         <div class="hero-eyebrow">✦ Free virtual sessions · June 2026</div>
         <h1>Your child tries<br><span>Novatio</span> free.<br>One hour this June.</h1>
         <p class="hero-sub">
-          Novatio is a private virtual school for students in grades 4–8. Tuition is fully covered by Arizona ESA or Texas TEFA — <strong>$0 out of pocket for most families.</strong>
+          Try it free this June. <strong>Live, interactive sessions on Zoom</strong> — no application, no commitment. Your child builds an AI storybook, codes a real video game, or meets other virtual schoolers.
         </p>
-        <p class="hero-sub" style="margin-top:-10px;">
-          Try it free this June. One-hour virtual sessions — no application, no commitment. Your child builds an AI storybook, codes a real video game, or meets other virtual students.
-        </p>
+        <div class="hero-tags">
+          <span class="htag green">✓ Grades 2–8</span>
+          <span class="htag">🏠 Homeschool families welcome</span>
+          <span class="htag">🎓 No application required</span>
+        </div>
         <button class="btn-hero" onclick="document.getElementById('sessions').scrollIntoView({behavior:'smooth'})">Pick your session →</button>
-        <p class="hero-no-commit">Takes 60 seconds · Pick one session or all three · No application required</p>
+        <p class="hero-no-commit">Takes 60 seconds · Pick one session or all three · Completely free</p>
       </div>
 
     </div>
@@ -342,7 +392,7 @@
       <div class="tdiv"></div>
       <div class="titem">
         <svg viewBox="0 0 15 15" fill="currentColor"><path d="M7.5 0L9.18 5.18H14.51L10.16 8.38L11.84 13.56L7.5 10.36L3.16 13.56L4.84 8.38L0.49 5.18H5.82L7.5 0Z"/></svg>
-        Grades 4–8
+        Grades 2–8
       </div>
     </div>
   </div>
@@ -353,12 +403,15 @@
 ════════════════════════════════════════════════ -->
 <section class="sessions-section" id="sessions">
   <div class="container">
-    <div class="section-label">JUNE 2026 · VIRTUAL · GRADES 4–8</div>
+    <div class="section-label">JUNE 2026 · VIRTUAL · GRADES 2–8</div>
     <h2 class="section-h2">Pick a session. Pick your week.</h2>
     <p class="section-sub">
       Each session is one hour. Same content runs every week of June —
       just pick the date that works for you. Sign up for one or all three.
     </p>
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#FFF8E7;border:1.5px solid #F59E0B;border-radius:10px;padding:9px 16px;font-size:13px;font-weight:700;color:#92400E;margin-bottom:32px;">
+      🏠 Homeschool family? This was made for you too.
+    </div>
 
     <div class="sessions-grid" id="main-cards">
 
@@ -416,9 +469,7 @@
         <h3>Meet Other Virtual Schoolers</h3>
         <p class="sc-time">Wednesdays · 12:00 PM MST · 1 hour</p>
         <p>
-          "I made my first friend in three years." A Novatio student said that after their first week.
-          Games, team challenges, scavenger hunts, and kids who actually understand what virtual school is like.
-          A different theme every week.
+          Games, team challenges, scavenger hunts, and a group of virtual and homeschooled students who actually get what it's like to learn outside a traditional classroom. "I made my first friend in three years." — A Novatio student, first week. A different theme every week.
         </p>
         <div class="sc-date-picker">
           <div class="sc-date-label">Pick a date in June:</div>
@@ -430,6 +481,52 @@
           </div>
           <div class="sc-selected-confirm" id="sc-confirm-social"></div>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     PHOTO STRIP
+     Photos: https://drive.google.com/drive/folders/1UxNkdAy5kgVcjyV5MBwEmhgplCQ9IId1
+     Download to ./photos/ and update src attributes below
+════════════════════════════════════════════════ -->
+<div class="photo-strip">
+  <div class="photo-grid">
+    <div class="photo-grid-item"><div class="photo-placeholder">photo coming</div></div>
+    <div class="photo-grid-item"><div class="photo-placeholder">photo coming</div></div>
+    <div class="photo-grid-item"><div class="photo-placeholder">photo coming</div></div>
+    <div class="photo-grid-item"><div class="photo-placeholder">photo coming</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     OUTCOMES
+════════════════════════════════════════════════ -->
+<section class="outcomes-section">
+  <div class="container">
+    <div class="section-label">WHAT YOUR CHILD GETS</div>
+    <h2 class="section-h2">More than a fun hour.</h2>
+    <p class="section-sub">Three things every student walks away with after one session.</p>
+    <div class="outcomes-grid">
+
+      <div class="outcome-card">
+        <span class="outcome-icon">🤝</span>
+        <h3>Make real friends</h3>
+        <p>Meet other kids who actually get what their life is like — virtual schoolers, homeschoolers, and students who've never quite fit the traditional mold. The community is the thing.</p>
+      </div>
+
+      <div class="outcome-card">
+        <span class="outcome-icon">🏆</span>
+        <h3>Build something real</h3>
+        <p>Your child leaves with a finished product they're proud of — a 10-page AI storybook, a playable Scratch game, or new friendships from across the country. Not a participation ribbon.</p>
+      </div>
+
+      <div class="outcome-card">
+        <span class="outcome-icon">💡</span>
+        <h3>Discover what they're capable of</h3>
+        <p>One hour is enough to change how a kid thinks about learning. No grades, no pressure — just proof that they can create something from scratch with the right environment.</p>
       </div>
 
     </div>
@@ -457,17 +554,19 @@
 
       <form onsubmit="handleMainSubmit(event)">
         <div class="frow">
-          <div class="fg"><label>Your first name *</label><input type="text" name="first_name" required placeholder="Sarah" /></div>
-          <div class="fg"><label>Your last name *</label><input type="text" name="last_name" required placeholder="Johnson" /></div>
+          <div class="fg"><label>Guardian First Name *</label><input type="text" name="first_name" required placeholder="Sarah" /></div>
+          <div class="fg"><label>Guardian Last Name *</label><input type="text" name="last_name" required placeholder="Johnson" /></div>
         </div>
-        <div class="fg"><label>Child's first name *</label><input type="text" name="child_firstname" required placeholder="Alex" /></div>
-        <div class="fg"><label>Email address *</label><input type="email" name="email" required placeholder="parent@email.com" /></div>
-        <div class="fg"><label>Phone *</label><input type="tel" name="phone" required placeholder="(555) 000-0000" /></div>
+        <div class="fg"><label>Student's First Name *</label><input type="text" name="child_firstname" required placeholder="Alex" /></div>
+        <div class="fg"><label>Email Address *</label><input type="email" name="email" required placeholder="parent@email.com" /></div>
+        <div class="fg"><label>Phone Number *</label><input type="tel" name="phone" required placeholder="(555) 000-0000" /></div>
         <div class="frow">
           <div class="fg">
-            <label>Child's grade *</label>
+            <label>Student's Grade (2026–2027) *</label>
             <select name="grade" required>
               <option value="">Select grade…</option>
+              <option value="2nd">2nd grade</option>
+              <option value="3rd">3rd grade</option>
               <option value="4th">4th grade</option>
               <option value="5th">5th grade</option>
               <option value="6th">6th grade</option>
@@ -534,7 +633,7 @@
           </div>
         </div>
         <p class="consent">By submitting, you agree to receive texts and calls from Novatio about programs and enrollment. Reply STOP to opt out. <a href="https://novatio.school/privacy-policy" style="color:var(--orange)">Privacy Policy</a>.</p>
-        <button type="submit" class="btn-submit">Reserve my spot — it's free →</button>
+        <button type="submit" class="btn-submit">Save my child's spot →</button>
         <p class="form-trust">✓ No commitment · No application required · Unsubscribe anytime</p>
       </form>
     </div>
@@ -582,6 +681,91 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ABOUT NOVATIO
+════════════════════════════════════════════════ -->
+<section class="about-section">
+  <div class="container">
+    <div class="section-label">ABOUT NOVATIO</div>
+    <div class="about-inner">
+      <div>
+        <h2>Love what you see?<br><span>Fall enrollment is open.</span></h2>
+        <p class="about-body">
+          Novatio is a private virtual school for students in grades 2–8. Students learn at their own pace with AI-driven instruction personalized to their exact skill level — not their grade. Live classes, real community, flexible schedule.
+        </p>
+        <p class="about-body" style="margin-top:-10px;">
+          For most Arizona and Texas families, tuition is fully covered by state education funding — $0 out of pocket. Homeschool families across the country are welcome too.
+        </p>
+        <a href="https://novatio.school" class="btn-about">Learn more about Novatio →</a>
+      </div>
+      <div>
+        <div class="about-tuition">
+          <div class="tuition-card">
+            <span class="tuition-badge az">Arizona</span>
+            <p>Fully covered by Arizona's ESA (Empowerment Scholarship Account) — most families pay nothing out of pocket.</p>
+          </div>
+          <div class="tuition-card">
+            <span class="tuition-badge tx">Texas</span>
+            <p>Eligible for Texas TEFA funding — most eligible families pay nothing out of pocket.</p>
+          </div>
+          <div class="tuition-card">
+            <span class="tuition-badge oos">Other states</span>
+            <p>We work with homeschool and private school families nationwide. Reach out to learn about your options.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-label">QUESTIONS</div>
+    <h2 class="section-h2">Good to know before you sign up.</h2>
+    <div class="faq-list">
+
+      <details>
+        <summary>Is this live or recorded?</summary>
+        <div class="faq-body">Live. Your child joins an interactive Zoom session with a teacher and other students. They participate, ask questions, and build in real time — it's not a video to watch.</div>
+      </details>
+
+      <details>
+        <summary>What does my child need to join?</summary>
+        <div class="faq-body">A laptop or desktop computer — not a phone or tablet (screen size matters for these activities). They'll also need a Gmail account, either their own or a parent's. We'll have options ready on the day if they need help getting set up.</div>
+      </details>
+
+      <details>
+        <summary>Is this really free?</summary>
+        <div class="faq-body">Yes. No credit card, no application, no hidden fees. Just pick a session, sign up, and show up.</div>
+      </details>
+
+      <details>
+        <summary>We're a homeschool family — is this for us?</summary>
+        <div class="faq-body">Absolutely. These sessions were built with homeschool families in mind. Your child will be alongside other virtual and homeschooled students who understand what it's actually like to learn outside a traditional classroom.</div>
+      </details>
+
+      <details>
+        <summary>Does my child need to prepare anything?</summary>
+        <div class="faq-body">Nothing. The teacher walks through everything from the start. Just join on time and be ready to participate. That's it.</div>
+      </details>
+
+      <details>
+        <summary>Can my child sign up for more than one session?</summary>
+        <div class="faq-body">Yes — and we recommend it. Each session is a completely different activity, so there's no overlap. Sign up for all three in the same week of June or spread them across the month.</div>
+      </details>
+
+      <details>
+        <summary>What grades are these sessions for?</summary>
+        <div class="faq-body">Students in grades 2–8 (for the 2026–2027 school year). The sessions are designed to be accessible and engaging across that full range.</div>
+      </details>
+
     </div>
   </div>
 </section>
@@ -668,7 +852,7 @@ function pickDate(pill) {
 
   selectedDates[sess] = { date, label };
   document.querySelector('#main-cards [data-session="'+sess+'"]').classList.add('has-date');
-  if (confirmEl) { confirmEl.textContent = '✓ You\'re signed up for ' + label; confirmEl.classList.add('visible'); }
+  if (confirmEl) { confirmEl.textContent = '✓ Date selected — complete your registration below ↓'; confirmEl.classList.add('visible'); }
   updateSummary();
 }
 
