@@ -10,6 +10,9 @@
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TPV3VJJK');</script>
   <!-- End Google Tag Manager -->
 
+  <!-- HubSpot Tracking — sets hubspotutk cookie required for form submissions -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/49158869.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -704,7 +707,7 @@ async function submitToHubSpot(formData) {
     { name: 'child_firstname',               value: formData.child_firstname },
     { name: 'email',                         value: formData.email          },
     { name: 'phone',                         value: formData.phone          },
-    { name: 'grade_eligibility',             value: formData.grade          },
+    { name: 'grade_eligibility',             value: 'eligible'              },
     { name: 'hs_state_code',                 value: formData.state          },
     { name: 'summer_sessions_interested_in', value: getSessionsValue()      },
     { name: 'lead_source_detail',            value: 'summer-sessions-novatio-2026' },
@@ -726,7 +729,7 @@ async function submitToHubSpot(formData) {
     const res = await fetch(
       `https://api.hsforms.com/submissions/v3/integration/submit/${HS_PORTAL}/${HS_FORM}`,
       { method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields, context: { pageUri: location.href, pageName: document.title } }) }
+        body: JSON.stringify({ fields, context: { pageUri: location.href, pageName: document.title, hutk: (document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]*)/) || [])[1] || undefined } }) }
     );
     if (!res.ok) {
       const body = await res.text().catch(() => '');
