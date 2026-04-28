@@ -710,7 +710,6 @@ async function submitToHubSpot(formData) {
     { name: 'grade_eligibility',             value: 'eligible'              },
     { name: 'hs_state_code',                 value: formData.state          },
     { name: 'summer_sessions_interested_in', value: getSessionsValue()      },
-    { name: 'lead_source_detail',            value: 'summer-sessions-novatio-2026' },
   ];
   // Add session-specific date properties for workflow timing + SMS copy
   Object.keys(selectedDates).forEach(sess => {
