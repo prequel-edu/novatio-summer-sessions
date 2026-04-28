@@ -51,7 +51,7 @@
 
     /* ── HERO ────────────────────────────────────────────────────── */
     .hero { background: var(--cream); padding: 64px 0 72px; }
-    .hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 56px; align-items: start; }
+    .hero-inner { max-width: 680px; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; background: rgba(252,75,12,.1); color: var(--orange); border: 1px solid rgba(252,75,12,.2); margin-bottom: 18px; letter-spacing: .3px; }
     .hero h1 { font-size: clamp(32px,3.8vw,54px); font-weight: 800; color: var(--dark); letter-spacing: -1.5px; line-height: 1.06; margin-bottom: 20px; }
     .hero h1 span { color: var(--orange); }
@@ -94,6 +94,11 @@
     .hc-pill { padding: 4px 10px; border-radius: 999px; border: 1.5px solid var(--border); font-size: 11px; font-weight: 700; color: var(--muted); background: #fff; cursor: pointer; transition: all .15s; white-space: nowrap; }
     .hc-pill:hover { border-color: var(--orange); color: var(--orange); }
     .hc-pill.selected { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+    /* Hero card CTA */
+    #hc-cta { width: 100%; margin-top: 6px; }
+    #hc-cta:disabled { opacity: .4; cursor: default; }
+    #hc-cta-hint { font-size: 11px; color: var(--muted); margin-top: 5px; }
 
     /* Hero form fields */
     .fg { margin-bottom: 10px; }
@@ -241,8 +246,6 @@
 
     /* ── RESPONSIVE ──────────────────────────────────────────────── */
     @media (max-width: 960px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-card { max-width: 520px; }
       .novatio-strip-inner { grid-template-columns: 1fr; gap: 36px; }
       .sessions-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .steps-row { grid-template-columns: 1fr; max-width: 360px; margin: 36px auto 0; }
@@ -292,185 +295,16 @@
 
       <!-- Left copy -->
       <div>
-        <div class="hero-eyebrow">✦ Experience virtual school done right</div>
-        <h1>Summer Sessions<br>with <span>Novatio School</span></h1>
+        <div class="hero-eyebrow">✦ Free virtual sessions · June 2026</div>
+        <h1>Your child tries<br><span>Novatio</span> free.<br>One hour this June.</h1>
         <p class="hero-sub">
-          Novatio is a private virtual school for students in grades 4–8. Tuition is fully covered by ESA — <strong>$0 out of pocket for Arizona residents.</strong>
+          Novatio is a private virtual school for students in grades 4–8. Tuition is fully covered by Arizona ESA or Texas TEFA — <strong>$0 out of pocket for most families.</strong>
         </p>
         <p class="hero-sub" style="margin-top:-10px;">
           Try it free this June. One-hour virtual sessions — no application, no commitment. Your child builds an AI storybook, codes a real video game, or meets other virtual students.
         </p>
         <button class="btn-hero" onclick="document.getElementById('sessions').scrollIntoView({behavior:'smooth'})">Pick your session →</button>
         <p class="hero-no-commit">Takes 60 seconds · Pick one session or all three · No application required</p>
-      </div>
-
-      <!-- Right: hero card -->
-      <div>
-        <div class="hero-card">
-          <div class="hero-card-label">🎉 Free · June 2026</div>
-          <h3>Pick a session — then a date</h3>
-          <p class="fsub">Select any or all three. Click to pick your week in June.</p>
-
-          <div class="hc-sessions" id="hc-sessions">
-
-            <!-- Story -->
-            <div class="hc-row" data-session="story" onclick="toggleHcRow(this)">
-              <div class="hc-header">
-                <div class="hc-check">
-                  <svg class="hc-check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <div class="hc-info">
-                  <div class="hc-title">Create Your Own Story</div>
-                  <div class="hc-subtitle">Tuesdays · 3:00 PM MST</div>
-                </div>
-                <span class="hc-badge workshop">Workshop</span>
-              </div>
-              <div class="hc-dates">
-                <div class="hc-dates-label">Pick your week:</div>
-                <div class="hc-pills">
-                  <button class="hc-pill" data-session="story" data-date="June 2" data-label="Tue, Jun 2" onclick="pickHcDate(event,this)">Jun 2</button>
-                  <button class="hc-pill" data-session="story" data-date="June 9" data-label="Tue, Jun 9" onclick="pickHcDate(event,this)">Jun 9</button>
-                  <button class="hc-pill" data-session="story" data-date="June 16" data-label="Tue, Jun 16" onclick="pickHcDate(event,this)">Jun 16</button>
-                  <button class="hc-pill" data-session="story" data-date="June 23" data-label="Tue, Jun 23" onclick="pickHcDate(event,this)">Jun 23</button>
-                  <button class="hc-pill" data-session="story" data-date="June 30" data-label="Tue, Jun 30" onclick="pickHcDate(event,this)">Jun 30</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Game -->
-            <div class="hc-row" data-session="game" onclick="toggleHcRow(this)">
-              <div class="hc-header">
-                <div class="hc-check">
-                  <svg class="hc-check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <div class="hc-info">
-                  <div class="hc-title">Build Your Own Video Game</div>
-                  <div class="hc-subtitle">Thursdays · 9:00 AM MST</div>
-                </div>
-                <span class="hc-badge workshop">Workshop</span>
-              </div>
-              <div class="hc-dates">
-                <div class="hc-dates-label">Pick your week:</div>
-                <div class="hc-pills">
-                  <button class="hc-pill" data-session="game" data-date="June 4" data-label="Thu, Jun 4" onclick="pickHcDate(event,this)">Jun 4</button>
-                  <button class="hc-pill" data-session="game" data-date="June 11" data-label="Thu, Jun 11" onclick="pickHcDate(event,this)">Jun 11</button>
-                  <button class="hc-pill" data-session="game" data-date="June 18" data-label="Thu, Jun 18" onclick="pickHcDate(event,this)">Jun 18</button>
-                  <button class="hc-pill" data-session="game" data-date="June 25" data-label="Thu, Jun 25" onclick="pickHcDate(event,this)">Jun 25</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Social -->
-            <div class="hc-row" data-session="social" onclick="toggleHcRow(this)">
-              <div class="hc-header">
-                <div class="hc-check">
-                  <svg class="hc-check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <div class="hc-info">
-                  <div class="hc-title">Meet Other Virtual Schoolers</div>
-                  <div class="hc-subtitle">Wednesdays · 12:00 PM MST</div>
-                </div>
-                <span class="hc-badge social">Social</span>
-              </div>
-              <div class="hc-dates">
-                <div class="hc-dates-label">Pick your week:</div>
-                <div class="hc-pills">
-                  <button class="hc-pill" data-session="social" data-date="June 3" data-label="Wed, Jun 3" onclick="pickHcDate(event,this)">Jun 3</button>
-                  <button class="hc-pill" data-session="social" data-date="June 10" data-label="Wed, Jun 10" onclick="pickHcDate(event,this)">Jun 10</button>
-                  <button class="hc-pill" data-session="social" data-date="June 17" data-label="Wed, Jun 17" onclick="pickHcDate(event,this)">Jun 17</button>
-                  <button class="hc-pill" data-session="social" data-date="June 24" data-label="Wed, Jun 24" onclick="pickHcDate(event,this)">Jun 24</button>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /hc-sessions -->
-
-          <form onsubmit="handleHeroSubmit(event)">
-            <div class="frow">
-              <div class="fg"><label>Your first name</label><input type="text" name="first_name" required placeholder="Sarah" /></div>
-              <div class="fg"><label>Your last name</label><input type="text" name="last_name" required placeholder="Johnson" /></div>
-            </div>
-            <div class="frow">
-              <div class="fg"><label>Child's first name</label><input type="text" name="child_firstname" required placeholder="Alex" /></div>
-              <div class="fg"><label>Child's last name</label><input type="text" name="child_lastname" required placeholder="Johnson" /></div>
-            </div>
-            <div class="fg"><label>Email</label><input type="email" name="email" required placeholder="parent@email.com" /></div>
-            <div class="fg"><label>Phone</label><input type="tel" name="phone" required placeholder="(555) 000-0000" /></div>
-            <div class="frow">
-              <div class="fg">
-                <label>Child's grade</label>
-                <select name="grade" required>
-                  <option value="">Select…</option>
-                  <option value="4th">4th grade</option>
-                  <option value="5th">5th grade</option>
-                  <option value="6th">6th grade</option>
-                  <option value="7th">7th grade</option>
-                  <option value="8th">8th grade</option>
-                </select>
-              </div>
-              <div class="fg">
-                <label>State</label>
-                <select name="state" required>
-                  <option value="">Select…</option>
-                  <option value="AZ">Arizona</option>
-                  <option value="TX">Texas</option>
-                  <option disabled>──────────</option>
-                  <option value="AL">Alabama</option>
-                  <option value="AK">Alaska</option>
-                  <option value="AR">Arkansas</option>
-                  <option value="CA">California</option>
-                  <option value="CO">Colorado</option>
-                  <option value="CT">Connecticut</option>
-                  <option value="DE">Delaware</option>
-                  <option value="FL">Florida</option>
-                  <option value="GA">Georgia</option>
-                  <option value="HI">Hawaii</option>
-                  <option value="ID">Idaho</option>
-                  <option value="IL">Illinois</option>
-                  <option value="IN">Indiana</option>
-                  <option value="IA">Iowa</option>
-                  <option value="KS">Kansas</option>
-                  <option value="KY">Kentucky</option>
-                  <option value="LA">Louisiana</option>
-                  <option value="ME">Maine</option>
-                  <option value="MD">Maryland</option>
-                  <option value="MA">Massachusetts</option>
-                  <option value="MI">Michigan</option>
-                  <option value="MN">Minnesota</option>
-                  <option value="MS">Mississippi</option>
-                  <option value="MO">Missouri</option>
-                  <option value="MT">Montana</option>
-                  <option value="NE">Nebraska</option>
-                  <option value="NV">Nevada</option>
-                  <option value="NH">New Hampshire</option>
-                  <option value="NJ">New Jersey</option>
-                  <option value="NM">New Mexico</option>
-                  <option value="NY">New York</option>
-                  <option value="NC">North Carolina</option>
-                  <option value="ND">North Dakota</option>
-                  <option value="OH">Ohio</option>
-                  <option value="OK">Oklahoma</option>
-                  <option value="OR">Oregon</option>
-                  <option value="PA">Pennsylvania</option>
-                  <option value="RI">Rhode Island</option>
-                  <option value="SC">South Carolina</option>
-                  <option value="SD">South Dakota</option>
-                  <option value="TN">Tennessee</option>
-                  <option value="UT">Utah</option>
-                  <option value="VT">Vermont</option>
-                  <option value="VA">Virginia</option>
-                  <option value="WA">Washington</option>
-                  <option value="WV">West Virginia</option>
-                  <option value="WI">Wisconsin</option>
-                  <option value="WY">Wyoming</option>
-                </select>
-              </div>
-            </div>
-            <p class="consent">By submitting, you agree to receive texts and calls from Novatio. Reply STOP to opt out. <a href="https://novatio.school/privacy-policy" style="color:var(--orange)">Privacy Policy</a>.</p>
-            <button type="submit" class="btn-submit">Reserve my spot — it's free →</button>
-            <p class="form-trust">✓ No commitment · No application required</p>
-          </form>
-        </div>
       </div>
 
     </div>
@@ -512,33 +346,6 @@
 </div>
 
 <!-- ════════════════════════════════════════════════
-     HOW IT WORKS
-════════════════════════════════════════════════ -->
-<section class="how-section">
-  <div class="container" style="text-align:center;">
-    <div class="section-label">HOW IT WORKS</div>
-    <h2 class="section-h2">Three steps.</h2>
-    <div class="steps-row">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h4>Pick a session and a date</h4>
-        <p>Choose one or all three sessions. Click a date to claim your spot in that week of June.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h4>Sign up — takes 60 seconds</h4>
-        <p>Just your name, email, and your child's grade. No application. No commitment. No cost.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h4>Show up and try it</h4>
-        <p>You'll get a Zoom link before your session. Your child tries Novatio — for real.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════
      JUNE SESSIONS
 ════════════════════════════════════════════════ -->
 <section class="sessions-section" id="sessions">
@@ -564,7 +371,7 @@
           and leave with a finished book to share.
         </p>
         <div class="sc-date-picker">
-          <div class="sc-date-label">Pick a date — this is your one session:</div>
+          <div class="sc-date-label">Pick a date in June:</div>
           <div class="sc-pills">
             <button class="sc-pill" data-session="story" data-date="June 2" data-label="Tue, Jun 2 · 3pm MST" onclick="pickDate(this)">Tue, Jun 2</button>
             <button class="sc-pill" data-session="story" data-date="June 9" data-label="Tue, Jun 9 · 3pm MST" onclick="pickDate(this)">Tue, Jun 9</button>
@@ -588,7 +395,7 @@
           you'll actually want to share.
         </p>
         <div class="sc-date-picker">
-          <div class="sc-date-label">Pick a date — this is your one session:</div>
+          <div class="sc-date-label">Pick a date in June:</div>
           <div class="sc-pills">
             <button class="sc-pill" data-session="game" data-date="June 4" data-label="Thu, Jun 4 · 9am MST" onclick="pickDate(this)">Thu, Jun 4</button>
             <button class="sc-pill" data-session="game" data-date="June 11" data-label="Thu, Jun 11 · 9am MST" onclick="pickDate(this)">Thu, Jun 11</button>
@@ -606,12 +413,12 @@
         <h3>Meet Other Virtual Schoolers</h3>
         <p class="sc-time">Wednesdays · 12:00 PM MST · 1 hour</p>
         <p>
-          Think Amazing Race meets Blooket. Games, team challenges, scavenger hunts —
-          and a group of virtual students who actually get it.
+          "I made my first friend in three years." A Novatio student said that after their first week.
+          Games, team challenges, scavenger hunts, and kids who actually understand what virtual school is like.
           A different theme every week.
         </p>
         <div class="sc-date-picker">
-          <div class="sc-date-label">Pick a date — this is your one session:</div>
+          <div class="sc-date-label">Pick a date in June:</div>
           <div class="sc-pills">
             <button class="sc-pill" data-session="social" data-date="June 3" data-label="Wed, Jun 3 · 12pm MST" onclick="pickDate(this)">Wed, Jun 3</button>
             <button class="sc-pill" data-session="social" data-date="June 10" data-label="Wed, Jun 10 · 12pm MST" onclick="pickDate(this)">Wed, Jun 10</button>
@@ -650,10 +457,7 @@
           <div class="fg"><label>Your first name *</label><input type="text" name="first_name" required placeholder="Sarah" /></div>
           <div class="fg"><label>Your last name *</label><input type="text" name="last_name" required placeholder="Johnson" /></div>
         </div>
-        <div class="frow">
-          <div class="fg"><label>Child's first name *</label><input type="text" name="child_firstname" required placeholder="Alex" /></div>
-          <div class="fg"><label>Child's last name *</label><input type="text" name="child_lastname" required placeholder="Johnson" /></div>
-        </div>
+        <div class="fg"><label>Child's first name *</label><input type="text" name="child_firstname" required placeholder="Alex" /></div>
         <div class="fg"><label>Email address *</label><input type="email" name="email" required placeholder="parent@email.com" /></div>
         <div class="fg"><label>Phone *</label><input type="tel" name="phone" required placeholder="(555) 000-0000" /></div>
         <div class="frow">
@@ -850,7 +654,6 @@ function pickDate(pill) {
     pill.classList.remove('selected');
     delete selectedDates[sess];
     document.querySelector('#main-cards [data-session="'+sess+'"]').classList.remove('has-date');
-    syncHcRow(sess, null);
     if (confirmEl) { confirmEl.textContent = ''; confirmEl.classList.remove('visible'); }
     updateSummary();
     return;
@@ -862,69 +665,8 @@ function pickDate(pill) {
 
   selectedDates[sess] = { date, label };
   document.querySelector('#main-cards [data-session="'+sess+'"]').classList.add('has-date');
-  syncHcRow(sess, date);
   if (confirmEl) { confirmEl.textContent = '✓ You\'re signed up for ' + label; confirmEl.classList.add('visible'); }
   updateSummary();
-}
-
-// ── Hero card row toggle (expand / collapse dates) ─────────────
-function toggleHcRow(row) {
-  // If clicking a pill button inside, don't toggle the row
-  if (event && event.target.classList.contains('hc-pill')) return;
-  row.classList.toggle('open');
-}
-
-// ── Hero card date pick ────────────────────────────────────────
-function pickHcDate(e, pill) {
-  e.stopPropagation(); // don't bubble to toggleHcRow
-  const sess = pill.dataset.session;
-  const date = pill.dataset.date;
-  const label = pill.dataset.label;
-  const row = pill.closest('.hc-row');
-
-  // Deselect all other pills in this session row
-  row.querySelectorAll('.hc-pill').forEach(p => p.classList.remove('selected'));
-
-  if (selectedDates[sess] && selectedDates[sess].date === date) {
-    // Toggle off
-    delete selectedDates[sess];
-    row.classList.remove('selected');
-    syncMainCard(sess, null);
-  } else {
-    pill.classList.add('selected');
-    selectedDates[sess] = { date, label };
-    row.classList.add('selected');
-    syncMainCard(sess, date);
-  }
-  updateSummary();
-}
-
-// ── Sync hero card row from main card selection ────────────────
-function syncHcRow(sess, date) {
-  const row = document.querySelector('#hc-sessions [data-session="'+sess+'"]');
-  if (!row) return;
-  row.querySelectorAll('.hc-pill').forEach(p => p.classList.remove('selected'));
-  if (date) {
-    row.classList.add('selected', 'open');
-    const pill = row.querySelector('[data-date="'+date+'"]');
-    if (pill) pill.classList.add('selected');
-  } else {
-    row.classList.remove('selected');
-  }
-}
-
-// ── Sync main card from hero card selection ────────────────────
-function syncMainCard(sess, date) {
-  const card = document.querySelector('#main-cards [data-session="'+sess+'"]');
-  if (!card) return;
-  card.querySelectorAll('.sc-pill').forEach(p => p.classList.remove('selected'));
-  if (date) {
-    card.classList.add('has-date');
-    const pill = card.querySelector('[data-date="'+date+'"]');
-    if (pill) pill.classList.add('selected');
-  } else {
-    card.classList.remove('has-date');
-  }
 }
 
 // ── Summary panel ──────────────────────────────────────────────
@@ -960,7 +702,6 @@ async function submitToHubSpot(formData) {
     { name: 'firstname',                     value: formData.first_name     },
     { name: 'lastname',                      value: formData.last_name      },
     { name: 'child_firstname',               value: formData.child_firstname },
-    { name: 'child_lastname',                value: formData.child_lastname  },
     { name: 'email',                         value: formData.email          },
     { name: 'phone',                         value: formData.phone          },
     { name: 'grade_eligibility',             value: formData.grade          },
@@ -982,34 +723,19 @@ async function submitToHubSpot(formData) {
   });
 
   try {
-    await fetch(
+    const res = await fetch(
       `https://api.hsforms.com/submissions/v3/integration/submit/${HS_PORTAL}/${HS_FORM}`,
       { method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fields, context: { pageUri: location.href, pageName: document.title } }) }
     );
-  } catch (err) { console.error('HubSpot error:', err); }
-}
-
-function successHTML() {
-  return `<div style="text-align:center;padding:36px 20px;">
-    <div style="font-size:52px;margin-bottom:16px;">🎉</div>
-    <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;margin-bottom:10px;color:#222625;">You're in!</h3>
-    <p style="color:#6B7280;font-size:14px;line-height:1.75;max-width:340px;margin:0 auto;">
-      We'll send your Zoom link before your session.
-      Questions? Text us at <a href="tel:520-375-3356" style="color:var(--orange);font-weight:600;">(520) 375-3356</a>.
-    </p>
-  </div>`;
-}
-
-async function handleHeroSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn  = form.querySelector('.btn-submit');
-  btn.textContent = 'Submitting…'; btn.disabled = true;
-  const data = Object.fromEntries(new FormData(form));
-  localStorage.setItem('novatio_confirmed_sessions', JSON.stringify(selectedDates));
-  await submitToHubSpot(data);
-  window.location.href = 'confirmed.html';
+    if (!res.ok) {
+      const body = await res.text().catch(() => '');
+      throw new Error(`HubSpot ${res.status}: ${body}`);
+    }
+  } catch (err) {
+    console.error('HubSpot error:', err);
+    throw err;
+  }
 }
 
 async function handleMainSubmit(e) {
@@ -1019,8 +745,14 @@ async function handleMainSubmit(e) {
   btn.textContent = 'Submitting…'; btn.disabled = true;
   const data = Object.fromEntries(new FormData(form));
   localStorage.setItem('novatio_confirmed_sessions', JSON.stringify(selectedDates));
-  await submitToHubSpot(data);
-  window.location.href = 'confirmed.html';
+  try {
+    await submitToHubSpot(data);
+    window.location.href = 'confirmed.html';
+  } catch (err) {
+    btn.textContent = 'Something went wrong — please try again';
+    btn.disabled = false;
+    btn.style.background = '#DC2626';
+  }
 }
 
 // ── UTM capture ────────────────────────────────────────────────
