@@ -701,34 +701,37 @@ function getSessionsValue() {
 
 // ── HubSpot submit ─────────────────────────────────────────────
 async function submitToHubSpot(formData) {
-  const fields = [
-    { name: 'firstname',                     value: formData.first_name     },
-    { name: 'lastname',                      value: formData.last_name      },
-    { name: 'child_firstname',               value: formData.child_firstname },
-    { name: 'email',                         value: formData.email          },
-    { name: 'phone',                         value: formData.phone          },
-    { name: 'grade_eligibility',             value: 'eligible'              },
-    { name: 'hs_state_code',                 value: formData.state          },
-    { name: 'summer_sessions_interested_in', value: getSessionsValue()      },
-  ];
-  // Add session-specific date properties for workflow timing + SMS copy
+  const fd = new FormData();
+  fd.append('firstname',                     formData.first_name);
+  fd.append('lastname',                      formData.last_name);
+  fd.append('email',                         formData.email);
+  fd.append('phone',                         formData.phone);
+  fd.append('grade_eligibility',             'eligible');
+  fd.append('hs_state_code',                 formData.state);
+  fd.append('summer_sessions_interested_in', getSessionsValue());
+
   Object.keys(selectedDates).forEach(sess => {
     const date = selectedDates[sess].date;
     const iso  = SESSION_DATE_ISO[sess]?.[date];
     const disp = SESSION_DATE_DISPLAY[sess]?.[date];
-    if (iso)  fields.push({ name: sess + '_session_date',         value: String(isoToHubSpotMs(iso)) });
-    if (disp) fields.push({ name: sess + '_session_date_display', value: disp });
+    if (iso)  fd.append(sess + '_session_date',         String(isoToHubSpotMs(iso)));
+    if (disp) fd.append(sess + '_session_date_display', disp);
   });
+
   ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k => {
     const v = localStorage.getItem('wf_' + k);
-    if (v) fields.push({ name: k, value: v });
+    if (v) fd.append(k, v);
   });
+
+  const hutk = (document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]*)/) || [])[1];
+  const ctx = { pageUri: location.href, pageName: document.title };
+  if (hutk) ctx.hutk = hutk;
+  fd.append('hs_context', JSON.stringify(ctx));
 
   try {
     const res = await fetch(
-      `https://api.hsforms.com/submissions/v3/integration/submit/${HS_PORTAL}/${HS_FORM}`,
-      { method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields, context: { pageUri: location.href, pageName: document.title, hutk: (document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]*)/) || [])[1] || undefined } }) }
+      `https://forms.hubspot.com/uploads/form/v2/${HS_PORTAL}/${HS_FORM}`,
+      { method: 'POST', body: fd }
     );
     if (!res.ok) {
       const body = await res.text().catch(() => '');
