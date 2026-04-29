@@ -157,6 +157,9 @@
     /* Date picker inside session card */
     .sc-date-picker { border-top: 1px solid var(--border); padding-top: 16px; }
     .sc-date-label { font-size: 11px; font-weight: 700; color: var(--dark); margin-bottom: 10px; letter-spacing: .2px; }
+    .sc-join-mode { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .5px; padding: 3px 10px; border-radius: 999px; margin-bottom: 8px; }
+    .sc-join-mode.one { background: #EDE9FE; color: #5B21B6; }
+    .sc-join-mode.all { background: #D1FAE5; color: #065F46; }
     .sc-pills { display: flex; flex-wrap: wrap; gap: 6px; }
     .sc-pill { padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--border); font-size: 12px; font-weight: 700; color: var(--muted); background: #fff; cursor: pointer; transition: all .15s; white-space: nowrap; }
     .sc-pill:hover { border-color: var(--orange); color: var(--orange); background: #fffbf9; }
@@ -426,6 +429,7 @@
       <div class="session-card" data-session="story">
         <span class="sc-icon">📖</span>
         <span class="sc-type workshop">Workshop</span>
+        <span class="sc-join-mode one">Join for 1</span>
         <h3>Create Your Own Story</h3>
         <p class="sc-time">Tuesdays · 3:00 PM MST · 1 hour</p>
         <p>
@@ -434,7 +438,7 @@
           and leave with a finished book to share.
         </p>
         <div class="sc-date-picker">
-          <div class="sc-date-label">Pick a date in June:</div>
+          <div class="sc-date-label">Select 1</div>
           <div class="sc-pills">
             <button class="sc-pill" data-session="story" data-date="June 2" data-label="Tue, Jun 2 · 3pm MST" onclick="pickDate(this)">Tue, Jun 2</button>
             <button class="sc-pill" data-session="story" data-date="June 9" data-label="Tue, Jun 9 · 3pm MST" onclick="pickDate(this)">Tue, Jun 9</button>
@@ -450,6 +454,7 @@
       <div class="session-card" data-session="game">
         <span class="sc-icon">🎮</span>
         <span class="sc-type workshop">Workshop</span>
+        <span class="sc-join-mode one">Join for 1</span>
         <h3>Build Your Own Video Game</h3>
         <p class="sc-time">Thursdays · 9:00 AM MST · 1 hour</p>
         <p>
@@ -458,7 +463,7 @@
           you'll actually want to share.
         </p>
         <div class="sc-date-picker">
-          <div class="sc-date-label">Pick a date in June:</div>
+          <div class="sc-date-label">Select 1</div>
           <div class="sc-pills">
             <button class="sc-pill" data-session="game" data-date="June 4" data-label="Thu, Jun 4 · 9am MST" onclick="pickDate(this)">Thu, Jun 4</button>
             <button class="sc-pill" data-session="game" data-date="June 11" data-label="Thu, Jun 11 · 9am MST" onclick="pickDate(this)">Thu, Jun 11</button>
@@ -473,13 +478,14 @@
       <div class="session-card" data-session="social">
         <span class="sc-icon">🤝</span>
         <span class="sc-type social">Social</span>
+        <span class="sc-join-mode all">Join for all</span>
         <h3>Meet Other Virtual Schoolers</h3>
         <p class="sc-time">Wednesdays · 12:00 PM MST · 1 hour</p>
         <p>
           Games, team challenges, scavenger hunts, and a group of virtual and homeschooled students who actually get what it's like to learn outside a traditional classroom. "I made my first friend in three years." — A Novatio student, first week. A different theme every week.
         </p>
         <div class="sc-date-picker">
-          <div class="sc-date-label">Pick a date in June:</div>
+          <div class="sc-date-label">Select 1 (or several)</div>
           <div class="sc-pills">
             <button class="sc-pill" data-session="social" data-date="June 3" data-label="Wed, Jun 3 · 12pm MST" onclick="pickDate(this)">Wed, Jun 3</button>
             <button class="sc-pill" data-session="social" data-date="June 10" data-label="Wed, Jun 10 · 12pm MST" onclick="pickDate(this)">Wed, Jun 10</button>
@@ -834,8 +840,15 @@ function isoToHubSpotMs(iso) {
   return new Date(iso + 'T00:00:00Z').getTime();
 }
 
-// ── State: session → { date, label } ──────────────────────────
-// e.g. { story: { date: 'June 2', label: 'Tue, Jun 2 · 3pm MST' } }
+// ── Social session → HubSpot bool property name ───────────────
+const SOCIAL_DATE_BOOL = {
+  'June 3':  'social_june_3',
+  'June 10': 'social_june_10',
+  'June 17': 'social_june_17',
+  'June 24': 'social_june_24',
+};
+
+// ── State: session → { date, label } (social = array) ─────────
 const selectedDates = {};
 
 const SESSION_NAMES = {
@@ -846,36 +859,55 @@ const SESSION_NAMES = {
 
 // ── Main card date picker ──────────────────────────────────────
 function pickDate(pill) {
-  const sess = pill.dataset.session;
-  const date = pill.dataset.date;
+  const sess  = pill.dataset.session;
+  const date  = pill.dataset.date;
   const label = pill.dataset.label;
+  const card  = document.querySelector('#main-cards [data-session="'+sess+'"]');
   const confirmEl = document.getElementById('sc-confirm-' + sess);
 
-  // If already selected, deselect
+  if (sess === 'social') {
+    pill.classList.toggle('selected');
+    const selected = Array.from(pill.closest('.sc-pills').querySelectorAll('.sc-pill.selected'));
+    if (selected.length) {
+      selectedDates.social = selected.map(b => ({ date: b.dataset.date, label: b.dataset.label }));
+    } else { delete selectedDates.social; }
+    card.classList.toggle('has-date', selected.length > 0);
+    if (confirmEl) {
+      if (selected.length) {
+        confirmEl.textContent = `✓ ${selected.length} date${selected.length > 1 ? 's' : ''} selected — register below ↓`;
+        confirmEl.classList.add('visible');
+      } else {
+        confirmEl.textContent = '';
+        confirmEl.classList.remove('visible');
+      }
+    }
+    updateSummary();
+    return;
+  }
+
+  // Workshop: single-select
   if (pill.classList.contains('selected')) {
     pill.classList.remove('selected');
     delete selectedDates[sess];
-    document.querySelector('#main-cards [data-session="'+sess+'"]').classList.remove('has-date');
+    card.classList.remove('has-date');
     if (confirmEl) { confirmEl.textContent = ''; confirmEl.classList.remove('visible'); }
     updateSummary();
     return;
   }
 
-  // Deselect any other pill in this session
   document.querySelectorAll('.sc-pill[data-session="'+sess+'"]').forEach(p => p.classList.remove('selected'));
   pill.classList.add('selected');
-
   selectedDates[sess] = { date, label };
-  document.querySelector('#main-cards [data-session="'+sess+'"]').classList.add('has-date');
+  card.classList.add('has-date');
   if (confirmEl) { confirmEl.textContent = '✓ Date selected — complete your registration below ↓'; confirmEl.classList.add('visible'); }
   updateSummary();
 }
 
 // ── Summary panel ──────────────────────────────────────────────
 function updateSummary() {
-  const list = document.getElementById('ss-list');
+  const list  = document.getElementById('ss-list');
   const nudge = document.getElementById('ss-nudge');
-  const keys = Object.keys(selectedDates);
+  const keys  = Object.keys(selectedDates);
 
   if (keys.length === 0) {
     list.innerHTML = '<span class="ss-empty">No sessions selected yet — pick your dates above.</span>';
@@ -883,19 +915,28 @@ function updateSummary() {
     return;
   }
 
-  list.innerHTML = keys.map(k => {
-    const s = selectedDates[k];
-    return `<div class="ss-item"><span class="dot"></span><span>${SESSION_NAMES[k]}</span><span class="ss-date">· ${s.label}</span></div>`;
-  }).join('');
+  const rows = [];
+  keys.forEach(k => {
+    const val = selectedDates[k];
+    const entries = Array.isArray(val) ? val : [val];
+    entries.forEach(e => {
+      rows.push(`<div class="ss-item"><span class="dot"></span><span>${SESSION_NAMES[k]}</span><span class="ss-date">· ${e.label}</span></div>`);
+    });
+  });
+  list.innerHTML = rows.join('');
 
   nudge.style.display = keys.length < 3 ? 'block' : 'none';
 }
 
 // ── Build HubSpot value string ──────────────────────────────────
 function getSessionsValue() {
-  return Object.keys(selectedDates)
-    .map(k => `${SESSION_NAMES[k]} – ${selectedDates[k].date}`)
-    .join('; ') || 'None selected';
+  const parts = [];
+  Object.keys(selectedDates).forEach(k => {
+    const val = selectedDates[k];
+    const entries = Array.isArray(val) ? val : [val];
+    entries.forEach(e => parts.push(`${SESSION_NAMES[k]} – ${e.date}`));
+  });
+  return parts.join('; ') || 'None selected';
 }
 
 // ── HubSpot submit ─────────────────────────────────────────────
@@ -910,11 +951,32 @@ async function submitToHubSpot(formData) {
   fd.append('summer_sessions_interested_in', getSessionsValue());
 
   Object.keys(selectedDates).forEach(sess => {
-    const date = selectedDates[sess].date;
-    const iso  = SESSION_DATE_ISO[sess]?.[date];
-    const disp = SESSION_DATE_DISPLAY[sess]?.[date];
-    if (iso)  fd.append(sess + '_session_date',         String(isoToHubSpotMs(iso)));
-    if (disp) fd.append(sess + '_session_date_display', disp);
+    const val = selectedDates[sess];
+    if (sess === 'social') {
+      const entries = Array.isArray(val) ? val : [val];
+      // Set individual bool property for each selected date
+      entries.forEach(e => {
+        const prop = SOCIAL_DATE_BOOL[e.date];
+        if (prop) fd.append(prop, 'true');
+      });
+      // Display string of all selected dates
+      const displayStr = entries.map(e => SESSION_DATE_DISPLAY.social?.[e.date]).filter(Boolean).join(', ');
+      if (displayStr) fd.append('social_session_dates_display', displayStr);
+      // Back-compat: first date fields
+      const first = entries[0];
+      if (first) {
+        const iso  = SESSION_DATE_ISO.social?.[first.date];
+        const disp = SESSION_DATE_DISPLAY.social?.[first.date];
+        if (iso)  fd.append('social_session_date',         String(isoToHubSpotMs(iso)));
+        if (disp) fd.append('social_session_date_display', disp);
+      }
+    } else {
+      const date = val.date;
+      const iso  = SESSION_DATE_ISO[sess]?.[date];
+      const disp = SESSION_DATE_DISPLAY[sess]?.[date];
+      if (iso)  fd.append(sess + '_session_date',         String(isoToHubSpotMs(iso)));
+      if (disp) fd.append(sess + '_session_date_display', disp);
+    }
   });
 
   ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k => {
