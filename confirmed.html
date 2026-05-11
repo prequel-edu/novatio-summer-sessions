@@ -549,7 +549,8 @@ const SESSION_META = {
     title: 'Create Your Own Story',
     time: '3:00 PM MST',
     calTitle: 'Novatio Summer Session: Create Your Own Story',
-    calDesc: 'Free virtual session with Novatio School. Zoom link will be emailed before the session.\\nQuestions? admissions@novatio.school or (520) 375-3356',
+    zoom: 'https://us06web.zoom.us/j/81861751253?pwd=P6jib7PKomV0JLx1uxXuaEFmc9lx8A.1',
+    calDesc: 'Free virtual session with Novatio School.\\nZoom: https://us06web.zoom.us/j/81861751253?pwd=P6jib7PKomV0JLx1uxXuaEFmc9lx8A.1\\nQuestions? admissions@novatio.school or (520) 375-3356',
     times: {
       'June 2':  { start: '20260602T220000Z', end: '20260602T230000Z' },
       'June 9':  { start: '20260609T220000Z', end: '20260609T230000Z' },
@@ -563,7 +564,8 @@ const SESSION_META = {
     title: 'Build Your Own Video Game',
     time: '9:00 AM MST',
     calTitle: 'Novatio Summer Session: Build Your Own Video Game',
-    calDesc: 'Free virtual session with Novatio School. Zoom link will be emailed before the session.\\nQuestions? admissions@novatio.school or (520) 375-3356',
+    zoom: 'https://us06web.zoom.us/j/81861751253?pwd=P6jib7PKomV0JLx1uxXuaEFmc9lx8A.1',
+    calDesc: 'Free virtual session with Novatio School.\\nZoom: https://us06web.zoom.us/j/81861751253?pwd=P6jib7PKomV0JLx1uxXuaEFmc9lx8A.1\\nQuestions? admissions@novatio.school or (520) 375-3356',
     times: {
       'June 4':  { start: '20260604T160000Z', end: '20260604T170000Z' },
       'June 11': { start: '20260611T160000Z', end: '20260611T170000Z' },
@@ -576,7 +578,8 @@ const SESSION_META = {
     title: 'Meet Other Virtual Schoolers',
     time: '12:00 PM MST',
     calTitle: 'Novatio Summer Session: Meet Other Virtual Schoolers',
-    calDesc: 'Free virtual session with Novatio School. Zoom link will be emailed before the session.\\nQuestions? admissions@novatio.school or (520) 375-3356',
+    zoom: 'https://us06web.zoom.us/j/87090841468?pwd=s3hhp3OEg2MGOqLzntRbo3Folm55sm.1',
+    calDesc: 'Free virtual session with Novatio School.\\nZoom: https://us06web.zoom.us/j/87090841468?pwd=s3hhp3OEg2MGOqLzntRbo3Folm55sm.1\\nQuestions? admissions@novatio.school or (520) 375-3356',
     times: {
       'June 3':  { start: '20260603T190000Z', end: '20260603T200000Z' },
       'June 10': { start: '20260610T190000Z', end: '20260610T200000Z' },
@@ -595,7 +598,7 @@ function googleCalLink(meta, date) {
     text:     meta.calTitle,
     dates:    t.start + '/' + t.end,
     details:  meta.calDesc.replace(/\\n/g, '\n'),
-    location: 'Online — Zoom link will be emailed before the session',
+    location: meta.zoom,
   });
   return 'https://www.google.com/calendar/render?' + params.toString();
 }
@@ -613,8 +616,8 @@ function makeIcsBlob(meta, date) {
     'DTSTART:' + t.start,
     'DTEND:' + t.end,
     'SUMMARY:' + meta.calTitle,
-    'DESCRIPTION:' + meta.calDesc,
-    'LOCATION:Online — Zoom link will be emailed before the session',
+    'DESCRIPTION:' + meta.calDesc.replace(/\\n/g, '\\n'),
+    'LOCATION:' + meta.zoom,
     'END:VEVENT',
     'END:VCALENDAR'
   ].join('\r\n');

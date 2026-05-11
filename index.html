@@ -532,13 +532,13 @@
             <label>Student's Grade (2026–2027) *</label>
             <select name="grade" required>
               <option value="">Select grade…</option>
-              <option value="2nd">2nd grade</option>
-              <option value="3rd">3rd grade</option>
-              <option value="4th">4th grade</option>
-              <option value="5th">5th grade</option>
-              <option value="6th">6th grade</option>
-              <option value="7th">7th grade</option>
-              <option value="8th">8th grade</option>
+              <option value="Grade 2">2nd grade</option>
+              <option value="Grade 3">3rd grade</option>
+              <option value="Grade 4">4th grade</option>
+              <option value="Grade 5">5th grade</option>
+              <option value="Grade 6">6th grade</option>
+              <option value="Grade 7">7th grade</option>
+              <option value="Grade 8">8th grade</option>
             </select>
           </div>
           <div class="fg">
@@ -944,6 +944,8 @@ async function submitToHubSpot(formData) {
   const fd = new FormData();
   fd.append('firstname',                     formData.first_name);
   fd.append('lastname',                      formData.last_name);
+  fd.append('student_first_name',            formData.child_firstname);
+  fd.append('grade_level',                   formData.grade);
   fd.append('email',                         formData.email);
   fd.append('phone',                         formData.phone);
   fd.append('grade_eligibility',             'eligible');
