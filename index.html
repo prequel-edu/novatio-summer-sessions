@@ -857,6 +857,28 @@ const SESSION_NAMES = {
   social: 'Meet Other Virtual Schoolers',
 };
 
+// ── Hide pills for sessions whose start time has passed ───────
+// MST = UTC-7 (Arizona, no DST). Session start hour per type:
+const SESSION_START_HOUR_MST = { story: 15, game: 9, social: 12 };
+function hidePastSessions() {
+  const now = Date.now();
+  document.querySelectorAll('.sc-pill').forEach(pill => {
+    const sess = pill.dataset.session;
+    const date = pill.dataset.date;
+    const iso = SESSION_DATE_ISO[sess] && SESSION_DATE_ISO[sess][date];
+    const hr  = SESSION_START_HOUR_MST[sess];
+    if (!iso || hr === undefined) return;
+    const startMs = new Date(iso + 'T' + String(hr).padStart(2,'0') + ':00:00-07:00').getTime();
+    if (startMs <= now) pill.style.display = 'none';
+  });
+  document.querySelectorAll('.session-card').forEach(card => {
+    const live = Array.from(card.querySelectorAll('.sc-pill')).filter(p => p.style.display !== 'none');
+    if (live.length === 0) card.style.display = 'none';
+  });
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hidePastSessions);
+else hidePastSessions();
+
 // ── Main card date picker ──────────────────────────────────────
 function pickDate(pill) {
   const sess  = pill.dataset.session;
