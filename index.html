@@ -951,6 +951,7 @@ async function submitToHubSpot(formData) {
   fd.append('grade_eligibility',             'eligible');
   fd.append('hs_state_code',                 formData.state);
   fd.append('summer_sessions_interested_in', getSessionsValue());
+  fd.append('lead_source_detail',            'summer-sessions-novatio-2026');
 
   Object.keys(selectedDates).forEach(sess => {
     const val = selectedDates[sess];
