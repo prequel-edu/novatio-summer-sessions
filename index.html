@@ -189,6 +189,8 @@
     .ss-item .ss-date { color: var(--muted); font-size: 12px; }
     .ss-empty { font-size: 13px; color: var(--muted); font-style: italic; }
     .ss-nudge { font-size: 11px; color: var(--muted); margin-top: 8px; border-top: 1px solid rgba(252,75,12,.12); padding-top: 8px; }
+    .ss-error, .form-error { font-size: 13px; color: #b91c1c; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 10px 12px; margin-top: 10px; }
+    .sessions-summary.is-error { border-color: #b91c1c; box-shadow: 0 0 0 2px rgba(185,28,28,.15); }
     .form-h2 { font-size: clamp(22px,2.5vw,30px); font-weight: 800; letter-spacing: -.5px; margin-bottom: 6px; }
     .form-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
     .form-section .fg input, .form-section .fg select { padding: 11px 14px; font-size: 14px; background: var(--cream); }
@@ -517,6 +519,7 @@
         <div class="ss-nudge" id="ss-nudge" style="display:none">
           💡 Want the full experience? Sign up for all three sessions in the same week of June.
         </div>
+        <div id="ss-error" class="ss-error" style="display:none" role="alert" aria-live="polite"></div>
       </div>
 
       <form onsubmit="handleMainSubmit(event)">
@@ -600,6 +603,7 @@
           </div>
         </div>
         <p class="consent">By submitting, you agree to receive texts and calls from Novatio about programs and enrollment. Reply STOP to opt out. <a href="https://novatio.school/privacy-policy" style="color:var(--orange)">Privacy Policy</a>.</p>
+        <div id="form-error" class="form-error" style="display:none" role="alert" aria-live="polite"></div>
         <button type="submit" class="btn-submit">Save my child's spot →</button>
         <p class="form-trust">✓ No commitment · No application required · Unsubscribe anytime</p>
       </form>
@@ -1029,20 +1033,56 @@ async function submitToHubSpot(formData) {
   }
 }
 
+function showSessionsError(msg) {
+  const box = document.getElementById('ss-summary');
+  const err = document.getElementById('ss-error');
+  err.textContent = msg;
+  err.style.display = 'block';
+  box.classList.add('is-error');
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function clearSessionsError() {
+  const box = document.getElementById('ss-summary');
+  const err = document.getElementById('ss-error');
+  err.style.display = 'none';
+  err.textContent = '';
+  box.classList.remove('is-error');
+}
+function showFormError(msg) {
+  const err = document.getElementById('form-error');
+  err.textContent = msg;
+  err.style.display = 'block';
+  err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function clearFormError() {
+  const err = document.getElementById('form-error');
+  err.style.display = 'none';
+  err.textContent = '';
+}
+
 async function handleMainSubmit(e) {
   e.preventDefault();
+  clearSessionsError();
+  clearFormError();
   const form = e.target;
   const btn  = form.querySelector('.btn-submit');
+
+  if (!Object.keys(selectedDates).length) {
+    showSessionsError('Please pick at least one session above before saving your child’s spot.');
+    return;
+  }
+
   btn.textContent = 'Submitting…'; btn.disabled = true;
+  btn.style.background = '';
   const data = Object.fromEntries(new FormData(form));
   localStorage.setItem('novatio_confirmed_sessions', JSON.stringify(selectedDates));
   try {
     await submitToHubSpot(data);
     window.location.href = 'confirmed.html';
   } catch (err) {
-    btn.textContent = 'Something went wrong — please try again';
+    btn.textContent = 'Save my child’s spot →';
     btn.disabled = false;
-    btn.style.background = '#DC2626';
+    showFormError('We couldn’t save the spot just now (' + (err && err.message ? err.message : 'network error') + '). Please try again, or email admissions@novatio.school and we’ll get your child signed up.');
   }
 }
 
